@@ -1,3 +1,12 @@
-.conteiner {
-  text-align: center; 
+.conteiner_page {
+   width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+   background: rgb(43, 42, 42);
+}
+
+.conteiner_header {
+	border-left: 2px solid rgb(87, 87, 87);
+	border-right: 2px solid rgb(87, 87, 87);
+	padding: 15px;
 }

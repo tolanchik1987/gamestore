@@ -1,0 +1,15 @@
+.conteiner_nav {
+   display: flex;
+   justify-content: space-between;
+//    margin: 2px 0 0 0;
+   align-items: center;
+   font-size: 24px;
+   img {
+      width: 80px;
+      border-radius: 30px;
+   }
+   a:not(:last-child) {
+      margin: 30px;
+
+   }
+}
