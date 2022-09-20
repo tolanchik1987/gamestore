@@ -1,0 +1,24 @@
+@mixin btnStyle() {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    background: rgb(33, 60, 151);
+    padding: 10px;
+    margin-top: 10px;
+    &:hover {
+        box-shadow: 1px 1px 10px rgb(223, 223, 223);
+        }
+}
+
+
+
+.conteiner__catalog {
+    font-size: 24px;
+    button {
+        @include btnStyle()
+    }
+    .conteiner__catalog_game {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}  

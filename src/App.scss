@@ -1,12 +1,23 @@
-.conteiner_page {
+.conteiner__page {
    width: 1200px;
    margin: 0 auto;
    text-align: center;
    background: rgb(43, 42, 42);
+   border-left: 2px solid rgb(87, 87, 87);
+   border-right: 2px solid rgb(87, 87, 87);
+   display: flex;
+   flex-direction: column;
 }
 
-.conteiner_header {
-	border-left: 2px solid rgb(87, 87, 87);
-	border-right: 2px solid rgb(87, 87, 87);
-	padding: 15px;
+.conteiner__header {
+   padding: 15px;
+   border-bottom: 2px solid rgba(134, 134, 134, 0.541);
+}
+
+.conteiner__content {
+  font-size: 18px;
+}
+
+.conteiner__footer {
+   border-top: 2px solid rgba(134, 134, 134, 0.541);
 }

@@ -8,8 +8,18 @@
       width: 80px;
       border-radius: 30px;
    }
+   a {
+      color: white;
+      text-decoration: none;
+      padding: 0px 15px 5px 15px;
+      transition: background-color 0.8s ease;
+      &:hover {
+         border-radius: 25px;
+         background: rgb(59, 58, 58);
+        
+      }
+   }
    a:not(:last-child) {
       margin: 30px;
-
    }
 }
