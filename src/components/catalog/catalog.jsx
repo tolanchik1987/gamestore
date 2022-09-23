@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./catalog.module.scss";
+import classes from "./Catalog.module.scss";
 import GameItem from "./gameItem/GameItem";
 import { useDispatch } from "react-redux";
 import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
@@ -69,7 +69,7 @@ const GAMES = [
 
 const Catalog = () => {
    const dispatch = useDispatch();
-   const [viewCatalog, setViewCatalog] = useState(false);
+   const [viewCatalog, setViewCatalog] = useState(true);
  
    const handlerClickViewCatalog = () => {
       setViewCatalog(!viewCatalog);

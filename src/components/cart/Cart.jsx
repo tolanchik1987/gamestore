@@ -11,14 +11,14 @@ const Cart = () => {
          {items && (
 			<div className={classes.conteiner__gameInCart}>
 				<div className={classes.gameTitle}>
-					{items.map(i=><div><span key={i.id}>{i.title}</span></div>)}
+					{items.map(i=><div><img src={i.image} alt="" /><span key={i.id}>{i.title} - {i.price} руб.</span></div>)}
 					<br/>
 				</div>
-            	<div>
-               		<span>Всего к оплате: {totalPrice}руб.</span>
+            	<div className={classes.priceAllGame}>
+               		<b>Всего к оплате: {totalPrice} руб.</b>
 					<button>Оплатить</button>
             	</div>
-			</div>
+			</div> 
          )}
       </div>
    );

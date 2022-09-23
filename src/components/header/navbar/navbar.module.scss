@@ -1,7 +1,6 @@
 .conteiner_nav {
    display: flex;
    justify-content: space-between;
-//    margin: 2px 0 0 0;
    align-items: center;
    font-size: 24px;
    img {
@@ -12,14 +11,26 @@
       color: white;
       text-decoration: none;
       padding: 0px 15px 5px 15px;
-      transition: background-color 0.8s ease;
+      border-radius: 25px;
+      transition: all 0.8s ease;
       &:hover {
-         border-radius: 25px;
+         animation: wave 2s ease infinite;
          background: rgb(59, 58, 58);
-        
       }
    }
    a:not(:last-child) {
       margin: 30px;
+   }
+}
+
+@keyframes wave {
+   0% {
+      box-shadow: 1px 1px 6px rgb(0, 50, 216);
+   }
+   50% {
+      box-shadow: 1px 1px 26px 10px rgb(0, 50, 216);
+   }
+   100% {
+      box-shadow: 1px 1px 6px rgb(0, 50, 216);
    }
 }

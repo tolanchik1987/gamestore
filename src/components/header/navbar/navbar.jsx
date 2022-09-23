@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import classes from "./navbar.module.scss"
+import classes from "./Navbar.module.scss"
 
 const Navbar = () => {
   return (

@@ -1,16 +1,17 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import About from './components/about/about';
+import About from './components/about/About';
 import Cart from './components/cart/Cart';
-import Catalog from './components/catalog/catalog';
-import Navbar from './components/header/navbar/navbar';
+import Catalog from './components/catalog/Catalog';
+import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
 
-function App() {
+const App = () => {
   return (
     <div className="conteiner__page">
       	<header className="conteiner__header">
-        	<Navbar />
+        	<Header />
       	</header>
 	  	<main className="conteiner__content">
       		<Routes>
@@ -21,10 +22,10 @@ function App() {
 			</Routes>
 		</main>
       	<footer className="conteiner__footer">
-			Footer
+			<Footer />
       	</footer>
     </div>
-  );
+  ); 
 }
 
 export default App;
