@@ -4,6 +4,7 @@ import './App.scss';
 import About from './components/about/About';
 import Cart from './components/cart/Cart';
 import Catalog from './components/catalog/Catalog';
+import GameInfo from './components/catalog/gameInfo/GameInfo';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 
@@ -16,9 +17,10 @@ const App = () => {
 	  	<main className="conteiner__content">
       		<Routes>
 				<Route path="/home" element={<Catalog />} />
-				<Route path="/catalog" element={<Catalog />}/>
-				<Route path="/about" element={<About />}/>
-				<Route path="/cart" element={<Cart />}/>
+				<Route path="/catalog" element={<Catalog />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/cart" element={<Cart />} />
+				<Route path="/GameInfo" element={<GameInfo />} />
 			</Routes>
 		</main>
       	<footer className="conteiner__footer">

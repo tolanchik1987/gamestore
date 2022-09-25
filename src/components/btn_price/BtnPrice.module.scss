@@ -1,0 +1,16 @@
+@import "../catalog/Catalog.module.scss";
+
+.price {
+   button {
+      @include btnStyle();
+   }
+}
+button.secondary{
+   &:hover {
+      background-color: rgb(106, 212, 0);
+      font-weight: 700;
+   }
+}
+button.primary {
+   background-color: rgb(107, 107, 107);
+}

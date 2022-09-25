@@ -18,6 +18,9 @@
          background: rgb(59, 58, 58);
       }
    }
+   a.itemInCart {
+      color:chartreuse;
+   }
    a:not(:last-child) {
       margin: 30px;
    }
