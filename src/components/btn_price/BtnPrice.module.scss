@@ -5,7 +5,7 @@
       @include btnStyle();
    }
 }
-button.secondary{
+button.secondary {
    &:hover {
       background-color: rgb(106, 212, 0);
       font-weight: 700;

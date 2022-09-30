@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import classes from "./Catalog.module.scss";
-import GameItem from "./gameItem/GameItem";
-import { useDispatch } from "react-redux";
-import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
+import GameItem from "../catalog/gameItem/GameItem";
+import classes from "./HomePage.module.scss";
 
 const GAMES = [
    {
@@ -12,6 +10,9 @@ const GAMES = [
       price: 2343,
       video: "https://www.youtube.com/embed/FYH9n37B7Yw",
       id: 1,
+      year: 2022,
+      popular: true,
+      sale: true,
       description:
          "Вас ждёт бесконечный калейдоскоп приключений Horizon! Совершайте увлекательные поездки по невероятно красивому и самобытному миру Мексики за рулём величайших автомобилей в истории. Начните своё приключение Horizon уже сегодня, добавив игру в свой список желаний!",
    },
@@ -22,6 +23,9 @@ const GAMES = [
       video: "https://www.youtube.com/embed/ASzOzrB-a9E",
       price: 2433,
       id: 2,
+      year: 2018,
+      popular: true,
+      sale: false,
       description:
          "Battlefield™ 2042 — это шутер от первого лица, в котором серия возвращается к легендарным масштабным сражениям. В будущем, где царит хаос, адаптируйтесь и процветайте на постоянно меняющихся полях боя благодаря своему отряду и арсеналу новейших технологий.",
    },
@@ -32,6 +36,9 @@ const GAMES = [
       video: "https://www.youtube.com/embed/b6CkzwVAr0M",
       price: 3021,
       id: 3,
+      year: 2022,
+      popular: false,
+      sale: false,
       description:
          "Алекс Чэнь от всех скрывает своё «проклятие» — сверхъестественную способность считывать сильные эмоции других и влиять на них. Но когда её брат погибает — якобы в результате несчастного случая, — Алекс использует её, чтобы узнать правду.",
    },
@@ -42,6 +49,9 @@ const GAMES = [
       video: "https://www.youtube.com/embed/QkkoHAzjnUs",
       price: 789,
       id: 4,
+      year: 2012,
+      popular: false,
+      sale: false,
       description:
          "Grand Theft Auto V для PC позволяет игрокам исследовать знаменитый мир Лос-Сантоса и округа Блэйн в разрешении до 4k и выше с частотой 60 кадров в секунду.",
    },
@@ -52,6 +62,9 @@ const GAMES = [
       genres: ["Тактика", "Шутер"],
       price: 982,
       id: 5,
+      year: 2019,
+      popular: false,
+      sale: false,
       description:
          "Tom Clancy's Rainbow Six Осада – это продолжение нашумевшего шутера от первого лица, разработанного студией Ubisoft Montreal.",
    },
@@ -62,32 +75,79 @@ const GAMES = [
       video: "https://www.youtube.com/embed/ssrNcwxALS4",
       price: 2863,
       id: 6,
+      year: 2022,
+      popular: false,
+      sale: false,
       description:
          "Assassin’s Creed Valhalla — мультиплатформенная компьютерная игра в жанре action/RPG, разработанная студией Ubisoft Montreal под издательством компании Ubisoft. Является двенадцатой игрой в серии игр Assassin’s Creed.",
    },
 ];
 
-const Catalog = () => {
-   const dispatch = useDispatch();
-   const [viewCatalog, setViewCatalog] = useState(true);
+const HomePage = () => {
+   const [visiblePopular, setVisiblePopular] = useState(false);
+   const [visibleNewGame, setVisibleNewGame] = useState(false);
+   const [visibleSaleGame, setVisibleSaleGame] = useState(false);
 
-   const handlerClickViewCatalog = () => {
-      setViewCatalog(!viewCatalog);
-      dispatch(getViewCatalog(viewCatalog));
+   const handleClickPopularGame = () => {
+      setVisiblePopular(true);
+      setVisibleNewGame(false);
+      setVisibleSaleGame(false);
+   };
+
+   const handleClickNewGame = () => {
+      setVisiblePopular(false);
+      setVisibleNewGame(true);
+      setVisibleSaleGame(false);
+   };
+
+   const handleClickSaleGame = () => {
+      setVisiblePopular(false);
+      setVisibleNewGame(false);
+      setVisibleSaleGame(true);
    };
 
    return (
-      <div className={classes.conteiner__catalog}>
-         <b>Каталог игр:</b>
-         <button onClick={handlerClickViewCatalog}>
-            {!viewCatalog ? "Показать игры" : "Скрыть игры"}
-         </button>
-         <div className={classes.conteiner__catalog_game}>
-            {viewCatalog &&
-               GAMES.map((game) => <GameItem game={game} key={game.id} />)}
+      <div className={classes.conteiner__homePage}>
+         <h2>Wellcom game store!</h2>
+         <div className={classes.listItem}>
+            <ul>
+               <li onClick={handleClickNewGame}>Новинки</li>
+               <li onClick={handleClickPopularGame}>Популярные</li>
+               <li onClick={handleClickSaleGame}>Скидки</li>
+               <li>Категории</li>
+            </ul>
+         </div>
+         <div className={classes.contentHomePage}>
+            {GAMES.map((game) => (
+               <img key={game.id} src={game.image} alt="" />
+            ))}
+         </div>
+         <div className={classes.contentGame}>
+            {visiblePopular &&
+               GAMES.map((game) =>
+                  game.popular === true ? (
+                     <GameItem game={game} key={game.id} />
+                  ) : null
+               )}
+         </div>
+         <div className={classes.contentGame}>
+            {visibleNewGame &&
+               GAMES.map((game) =>
+                  game.year > 2020 ? (
+                     <GameItem game={game} key={game.id} />
+                  ) : null
+               )}
+         </div>
+         <div className={classes.contentGame}>
+            {visibleSaleGame &&
+               GAMES.map((game) =>
+                  game.sale === true ? (
+                     <GameItem game={game} key={game.id} />
+                  ) : null
+               )}
          </div>
       </div>
    );
 };
 
-export default Catalog;
+export default HomePage;

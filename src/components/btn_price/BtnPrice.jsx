@@ -5,21 +5,32 @@ import classes from "./BtnPrice.module.scss";
 
 const BtnPrice = ({ game }) => {
    const dispatch = useDispatch();
-   const items = useSelector(state => state.cart.gameInCart)
-   const itemsInCart = items.some(i => i.id === game.id)
+   const items = useSelector((state) => state.cart.gameInCart);
+   const itemsInCart = items.some((i) => i.id === game.id);
 
    const addGameToCart = () => {
-    if (!itemsInCart) {
-        dispatch(addToCart(game))
-    } else {
-        dispatch(deleteGameInCart(game.id))
-    }
-       
+      if (!itemsInCart) {
+         dispatch(addToCart(game));
+      } else {
+         dispatch(deleteGameInCart(game.id));
+      }
    };
 
    return (
       <div className={classes.price}>
-         {!itemsInCart ? (<button className={classes.secondary} onClick={addGameToCart}>{!itemsInCart ? `Купить ${game.price}руб.` : "Удалить из корзины"} </button>) : (<button className={classes.primary} onClick={addGameToCart}>{!itemsInCart ? `Купить ${game.price}руб.` : "Удалить из корзины"} </button>)}
+         {!itemsInCart ? (
+            <button className={classes.secondary} onClick={addGameToCart}>
+               {!itemsInCart
+                  ? `В корзину ${game.price}руб.`
+                  : "Удалить из корзины"}{" "}
+            </button>
+         ) : (
+            <button className={classes.primary} onClick={addGameToCart}>
+               {!itemsInCart
+                  ? `В корзину ${game.price}руб.`
+                  : "Удалить из корзины"}{" "}
+            </button>
+         )}
       </div>
    );
 };

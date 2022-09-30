@@ -1,26 +1,26 @@
 .conteiner__game_info {
-    display:flex;
-    justify-content: space-around;
-    margin: 30px;
+   display: flex;
+   justify-content: space-around;
+   margin: 30px;
    img {
       width: 350px;
    }
    i {
-        font-size: 12px;
-        margin-right: 5px;
-        padding: 2px 5px;
-        border-radius: 10px;
-        background-color: rgb(116, 116, 116);
+      font-size: 12px;
+      margin-right: 5px;
+      padding: 2px 5px;
+      border-radius: 10px;
+      background-color: rgb(116, 116, 116);
    }
    .conteiner__info {
-     max-width: 350px;
+      max-width: 350px;
    }
    .conteiner__video {
-        align-self: center;
+      align-self: center;
    }
    .price {
-    display: flex;
-    justify-self: center;
-    margin-left: 80px;
- }
+      display: flex;
+      justify-self: center;
+      margin-left: 80px;
+   }
 }

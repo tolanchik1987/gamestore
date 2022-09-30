@@ -5,7 +5,7 @@ import classes from "./GameInfo.module.scss";
 
 const GameInfo = () => {
    const game = useSelector((state) => state.cart.gameSelected);
-   
+
    return (
       <div className={classes.conteiner__game_info}>
          <div className={classes.conteiner__video}>
@@ -35,8 +35,10 @@ const GameInfo = () => {
                <p>{game.description}</p>
             </div>
             <div className={classes.price}>
-            <div><BtnPrice game={game} /></div>
-         </div>
+               <div>
+                  <BtnPrice game={game} />
+               </div>
+            </div>
          </div>
       </div>
    );
