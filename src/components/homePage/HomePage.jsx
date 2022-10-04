@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GameItem from "../catalog/gameItem/GameItem";
+import PictureGameOnHomePage from "../SceletonItem/LoadingSceletonPictureGameOnHomePage/PictureGameOnHomePage";
 import classes from "./HomePage.module.scss";
 import JenersItem from "./jenersItem/JenersItem";
 
@@ -11,12 +12,14 @@ const HomePage = () => {
    const [visiblePictureGame, setVisiblePictureGame] = useState(true);
    const [activeCategory, setActiveCategory] = useState(null);
    const [data, setData] = useState([]);
+   const [isLoading, setIsLoading] = useState(true)
 
    useEffect(() => {
       fetch("https://633ae7ca471b8c395577f828.mockapi.io/items")
          .then((response) => response.json())
          .then((json) => {
             setData(json);
+            setIsLoading(false)
          });
    }, []);
 
@@ -70,12 +73,12 @@ const HomePage = () => {
                ))}
             </ul>
          </div>
-         <div className={classes.contentHomePage}>
-            {visiblePictureGame &&
+         {visiblePictureGame && <div className={classes.contentHomePage}>
+            {isLoading ? [...new Array(6)].map((_,i) => <PictureGameOnHomePage key={i} />) :
                data.map((game) => (
                   <img key={game.id} src={game.image} alt="" />
                ))}
-         </div>
+         </div>}
          {visiblePopular && (
             <div className={classes.contentGame}>
                {data.map(

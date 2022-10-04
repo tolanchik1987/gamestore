@@ -9,6 +9,7 @@ const Navbar = () => {
    const [activeLink, setActiveLink] = useState(0)
    const items = useSelector((state) => state.cart.gameInCart);
    const navigate = useNavigate()
+  
 
    const handelClick = () => {
       navigate("/home")

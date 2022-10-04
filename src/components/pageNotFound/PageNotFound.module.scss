@@ -1,0 +1,19 @@
+.wrapper {
+	width: 100%;
+	text-align: center;
+	margin-top: 150px;
+   h1 {
+      font-size: 34px;
+   }
+   .btnBack {
+      border-radius: 20px;
+      background-color: blue;
+      color: aliceblue;
+		font-size: 24px;
+      width: 200px;
+      height: 50px;
+		&:active {
+			box-shadow: 0 0 8px white;
+		}
+   }
+}

@@ -8,6 +8,7 @@ import GameInfo from "./components/catalog/gameInfo/GameInfo";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import HomePage from "./components/homePage/HomePage";
+import PageNotFound from "./components/pageNotFound/PageNotFound";
 
 const App = () => {
    return (
@@ -23,6 +24,7 @@ const App = () => {
                <Route path="/about" element={<About />} />
                <Route path="/cart" element={<Cart />} />
                <Route path="/GameInfo" element={<GameInfo />} />
+               <Route path="*" element={<PageNotFound />} />
             </Routes>
          </main>
          <footer className="conteiner__footer">

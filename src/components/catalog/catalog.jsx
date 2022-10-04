@@ -3,7 +3,7 @@ import classes from "./Catalog.module.scss";
 import GameItem from "./gameItem/GameItem";
 import { useDispatch } from "react-redux";
 import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
-import LoadingSceletonItemGame from "../loadingSceletonItemGame/LoadingSceletonItemGame";
+import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 
 const Catalog = () => {
    const dispatch = useDispatch();
