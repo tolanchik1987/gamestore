@@ -5,6 +5,9 @@
    img {
       width: 350px;
    }
+   h1 {
+      margin-bottom: -80px;
+   }
    i {
       font-size: 12px;
       margin-right: 5px;
@@ -14,13 +17,10 @@
    }
    .conteiner__info {
       max-width: 350px;
+      display: flex;
+      flex-direction: column;
    }
    .conteiner__video {
       align-self: center;
-   }
-   .price {
-      display: flex;
-      justify-self: center;
-      margin-left: 80px;
    }
 }

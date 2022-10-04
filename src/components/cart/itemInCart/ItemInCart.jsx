@@ -11,7 +11,7 @@ const ItemInCart = () => {
          <div className={classes.increment}>{increment}</div>
          <div className={classes.visible}>
             {items.map((item) => (
-               <div>
+               <div key={item.id}>
                   {item.title} - {item.price} руб.
                </div>
             ))}

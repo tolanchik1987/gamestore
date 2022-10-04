@@ -18,18 +18,12 @@ const GameInfo = () => {
             ></iframe>
          </div>
          <div className={classes.conteiner__info}>
+            <img src={game.image} alt="" />
+            <h1>{game.title}</h1>
             <div>
-               <img src={game.image} alt="" />
-            </div>
-            <div>
-               <h1>{game.title}</h1>
-            </div>
-            <div>
-               <p>
-                  {game.genres.map((ganre, i) => (
-                     <i key={i}>{ganre}</i>
-                  ))}
-               </p>
+               {game.genres.map((ganre, i) => (
+                  <i key={i}>{ganre}</i>
+               ))}
             </div>
             <div>
                <p>{game.description}</p>

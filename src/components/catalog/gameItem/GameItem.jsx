@@ -4,17 +4,10 @@ import { useDispatch } from "react-redux";
 import { gameChecked } from "../../store/cartReducer/cartSlice";
 import BtnPrice from "../../btn_price/BtnPrice";
 import classes from "./GameItem.module.scss";
-import styled, { keyframes } from "styled-components";
-import { zoomIn } from "react-animations";
 
 const GameItem = ({ game }) => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
-
-   const bounceAnimation = keyframes`${zoomIn}`;
-   const BouncyDiv = styled.div`
-      animation: 1s ${bounceAnimation};
-   `;
 
    const handelClick = () => {
       dispatch(gameChecked(game));
@@ -22,7 +15,6 @@ const GameItem = ({ game }) => {
    };
 
    return (
-      <BouncyDiv>
          <div className={classes.conteiner__game}>
             <div onClick={handelClick}>
                <div>
@@ -48,7 +40,6 @@ const GameItem = ({ game }) => {
                </div>
             </div>
          </div>
-      </BouncyDiv>
    );
 };
 

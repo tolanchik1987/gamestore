@@ -38,3 +38,8 @@
       box-shadow: 1px 1px 6px rgb(0, 50, 216);
    }
 }
+
+.active {
+   animation: wave 2s ease infinite;
+   background: rgb(59, 58, 58);
+}

@@ -1,0 +1,11 @@
+.conteiner__game {
+   cursor: pointer;
+   position: relative;
+   overflow: hidden;
+   border-radius: 15px;
+   margin: 10px;
+   transition: all 0.8s ease;
+   z-index: 1;
+   width: 350px;
+   height: 450px;
+}

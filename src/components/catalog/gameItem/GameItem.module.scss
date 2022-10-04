@@ -1,6 +1,7 @@
 @import "../Catalog.module.scss";
 
 .conteiner__game {
+   cursor: pointer;
    position: relative;
    overflow: hidden;
    border: 2px solid #000;
@@ -41,7 +42,7 @@
          box-shadow: 1px 1px 6px rgb(0, 50, 216);
       }
       50% {
-         box-shadow: 1px 1px 26px rgb(0, 50, 216);;
+         box-shadow: 1px 1px 26px rgb(0, 50, 216);
       }
       100% {
          box-shadow: 1px 1px 6px rgb(0, 50, 216);
