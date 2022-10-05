@@ -23,6 +23,7 @@ const JenersItem = () => {
          <div className={classes.categoryList}>
             <ul>
                {category.map((item,index) => <li
+                  key={item}
                   className={activeJanre === index ? classes.active : ""}
                   onClick={() => setActiveJanre(index)}
                >{item}</li>)}

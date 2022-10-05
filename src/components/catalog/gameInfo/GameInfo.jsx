@@ -13,7 +13,7 @@ const GameInfo = () => {
                src={game.video}
                width="650"
                height="450"
-               frameborder="0"
+               frameBorder="0"
                title="VIDEO"
             ></iframe>
          </div>

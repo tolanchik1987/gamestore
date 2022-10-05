@@ -1,5 +1,8 @@
 .conteiner__homePage {
    font-size: 38px;
+   .errorMessage {
+      color: red;
+   }
    h2 {
       margin-top: 50px;
       color: rgb(255, 255, 255);
@@ -59,3 +62,4 @@
    font-weight: 700;
    text-decoration: underline;
 }
+

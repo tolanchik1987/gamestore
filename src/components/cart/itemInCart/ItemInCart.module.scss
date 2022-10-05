@@ -1,5 +1,6 @@
 .conteiner__increment {
    border-radius: 50%;
+   margin-right: -18px;
    width: 16px;
    height: 16px;
    font-size: 12px;
@@ -8,29 +9,9 @@
    color: aliceblue;
    text-align: center;
    border: 1px solid whitesmoke;
-   position: absolute;
-   top: 30px;
-   right: 370px;
+   position: relative;
+   display: inline-block;
+   top: -6px;
+   left: -5px;
    overflow: hidden;
-   .visible {
-      display: none;
-      > div {
-         margin: 10px;
-      }
-      font-size: 16px;
-   }
-   &:hover {
-      width: 360px;
-      height: fit-content;
-      border-radius: 5px;
-      background-color: rgb(56, 56, 56);
-      border: 2px solid rgb(255, 255, 255);
-      .visible {
-         display: inherit;
-      }
-      .increment {
-         display: none;
-      }
-      z-index: 3;
-   }
 }

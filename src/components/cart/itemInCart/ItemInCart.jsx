@@ -9,13 +9,6 @@ const ItemInCart = () => {
    return (
       <div className={classes.conteiner__increment}>
          <div className={classes.increment}>{increment}</div>
-         <div className={classes.visible}>
-            {items.map((item) => (
-               <div key={item.id}>
-                  {item.title} - {item.price} руб.
-               </div>
-            ))}
-         </div>
       </div>
    );
 };
