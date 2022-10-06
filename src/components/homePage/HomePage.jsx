@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import GameItem from "../catalog/gameItem/GameItem";
+import API from "../../API/API";
 import PictureGameOnHomePage from "../SceletonItem/LoadingSceletonPictureGameOnHomePage/PictureGameOnHomePage";
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 import classes from "./HomePage.module.scss";
 import JenersItem from "./jenersItem/JenersItem";
 
 const HomePage = () => {
-   // const instance = axios.create({
-   //    baseURL: 'https://633ae7ca471b8c395577f828.mockapi.io/items',
-   //  });
-
    const [visiblePopular, setVisiblePopular] = useState(false);
    const [visibleNewGame, setVisibleNewGame] = useState(false);
    const [visibleSaleGame, setVisibleSaleGame] = useState(false);
@@ -20,11 +16,10 @@ const HomePage = () => {
    const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
    const [error, setError] = useState("");
-   const [searchValue, setSearchValue] = useState("")
+   const [searchValue, setSearchValue] = useState("");
 
    useEffect(() => {
-      axios
-         .get(`https://633ae7ca471b8c395577f828.mockapi.io/items` + searchValue)
+      API.get(searchValue)
          .then((response) => {
             setData(response.data);
             setIsLoading(false);
@@ -35,10 +30,10 @@ const HomePage = () => {
          .finally(() => {});
    }, [searchValue]);
 
-   const handleClick = (index) => {
+   const handleClickCategory = (index) => {
       if (index === 0) {
          setIsLoading(true);
-         setSearchValue("?search=2022")
+         setSearchValue("?search=2022");
          setVisiblePopular(false);
          setVisibleNewGame(true);
          setVisibleSaleGame(false);
@@ -47,7 +42,7 @@ const HomePage = () => {
          setActiveCategory(index);
       } else if (index === 1) {
          setIsLoading(true);
-         setSearchValue("?popular=true")
+         setSearchValue("?popular=true");
          setVisiblePopular(true);
          setVisibleNewGame(false);
          setVisibleSaleGame(false);
@@ -56,7 +51,7 @@ const HomePage = () => {
          setActiveCategory(index);
       } else if (index === 2) {
          setIsLoading(true);
-         setSearchValue("?sale=true")
+         setSearchValue("?sale=true");
          setVisiblePopular(false);
          setVisibleNewGame(false);
          setVisibleSaleGame(true);
@@ -65,7 +60,7 @@ const HomePage = () => {
          setActiveCategory(index);
       } else if (index === 3) {
          setIsLoading(true);
-         setSearchValue("")
+         setSearchValue(" ");
          setVisiblePopular(false);
          setVisibleNewGame(false);
          setVisibleSaleGame(false);
@@ -85,7 +80,7 @@ const HomePage = () => {
                {category.map((item, index) => (
                   <li
                      key={item}
-                     onClick={() => handleClick(index)}
+                     onClick={() => handleClickCategory(index)}
                      className={activeCategory === index ? classes.active : ""}
                   >
                      {item}
@@ -144,7 +139,9 @@ const HomePage = () => {
                )}
             </div>
          ) : (
-           <div className={classes.errorMessage}>Ошибка получения данных с сервера: { error }</div> 
+            <div className={classes.errorMessage}>
+               Ошибка получения данных с сервера: {error}
+            </div>
          )}
       </div>
    );

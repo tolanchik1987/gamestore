@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
 import GameItem from "./gameItem/GameItem";
+import API from "../../API/API";
 import { useDispatch } from "react-redux";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import axios from "axios";
 import classes from "./Catalog.module.scss";
 
 const Catalog = () => {
@@ -15,7 +15,28 @@ const Catalog = () => {
    const [visibleList, setVisibleList] = useState(false);
    const [selectListItem, setSelectListItem] = useState(null);
    const [error, setError] = useState("");
-   const [select, setSelect] = useState(null);
+   const [selectCategory, setSelectCategory] = useState(null);
+   const [sortListView, setSortListView] = useState(false);
+   const [sortListSelect, setSortListSelect] = useState(0);
+   const [selectSort, setSelectSort] = useState(0);
+
+   useEffect(() => {
+      API.get(
+         `${
+            !selectListItem
+               ? `?sortBy=${selectSort}`
+               : `?search=${selectCategory}&sortBy=${selectSort}`
+         }`
+      )
+         .then((response) => {
+            setData(response.data);
+            setIsLoadingGame(false);
+         })
+         .catch((error) => {
+            setError(error.message);
+         })
+         .finally(() => {});
+   }, [selectListItem, selectCategory, selectSort]);
 
    const category = [
       "Все",
@@ -32,47 +53,32 @@ const Catalog = () => {
       "Протагонистка",
    ];
 
+   const sortList = [
+      { name: "цена меньше", order: "price&order=asc" },
+      { name: "цена больше", order: "price&order=desc" },
+      { name: "по алфавиту", order: "title" },
+      { name: "сначала новые", oreder: "year&order=desc" },
+   ];
+
    const onChangeCategiry = (index) => {
       setIsLoadingGame(true);
       setSelectListItem(index);
-      setSelect(category[index]);
+      setSelectCategory(category[index]);
       setError("");
    };
    const handlerClickViewCatalog = () => {
       setViewCatalog(!viewCatalog);
       dispatch(getViewCatalog(viewCatalog));
    };
-
-   useEffect(() => {
-      axios
-         .get(
-            `https://633ae7ca471b8c395577f828.mockapi.io/items${
-               !selectListItem ? `` : `?search=${select}`
-            }`
-         )
-         .then((response) => {
-            setData(response.data);
-            setIsLoadingGame(false);
-         })
-         .catch((error) => {
-            setError(error.message);
-         })
-         .finally(() => {});
-   }, [selectListItem, select]);
+   const onClickSelectSortValue = (index) => {
+      setIsLoadingGame(true);
+      setSortListSelect(index);
+      setSelectSort(sortList[index].order);
+      setError("");
+   };
 
    return (
       <div className={classes.conteiner__catalog}>
-         <b>Каталог игр:</b>
-         <button onClick={handlerClickViewCatalog}>
-            {!viewCatalog ? "Показать игры" : "Скрыть игры"}
-         </button>
-         {error ? (
-            <div className={classes.errorMassege}>
-               Ошибка получения данных: {error}
-            </div>
-         ) : (
-            ""
-         )}
          <div>
             <ul
                onClick={() => setVisibleList(!visibleList)}
@@ -109,6 +115,41 @@ const Catalog = () => {
                ))}
             </ul>
          </div>
+         <div>
+            <button onClick={handlerClickViewCatalog}>
+               {!viewCatalog ? "Показать игры" : "Скрыть игры"}
+            </button>
+         </div>
+         <div
+            className={classes.sortList}
+            onClick={() => setSortListView(!sortListView)}
+         >
+            <div>
+               Сортировать по: <p>{sortList[sortListSelect].name}</p>
+               {sortList.map((item, index) => (
+                  <div
+                     onClick={() => onClickSelectSortValue(index)}
+                     key={index}
+                     className={
+                        sortListView
+                           ? classes.sortItemListOn
+                           : classes.sortItemListOff
+                     }
+                  >
+                     {item.name}
+                  </div>
+               ))}
+            </div>
+         </div>
+
+         {error ? (
+            <div className={classes.errorMassege}>
+               Ошибка получения данных: {error}
+            </div>
+         ) : (
+            ""
+         )}
+
          {viewCatalog && (
             <div className={classes.conteiner__catalog_game}>
                {isLoadingGame
