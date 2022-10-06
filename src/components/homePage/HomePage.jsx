@@ -20,10 +20,11 @@ const HomePage = () => {
    const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
    const [error, setError] = useState("");
+   const [searchValue, setSearchValue] = useState("")
 
    useEffect(() => {
       axios
-         .get("https://633ae7ca471b8c395577f828.mockapi.io/items")
+         .get(`https://633ae7ca471b8c395577f828.mockapi.io/items` + searchValue)
          .then((response) => {
             setData(response.data);
             setIsLoading(false);
@@ -32,21 +33,12 @@ const HomePage = () => {
             setError(error.message);
          })
          .finally(() => {});
-   }, []);
+   }, [searchValue]);
 
    const handleClick = (index) => {
       if (index === 0) {
          setIsLoading(true);
-         axios
-         .get("https://633ae7ca471b8c395577f828.mockapi.io/items?search=2022")
-         .then((response) => {
-            setData(response.data);
-            setIsLoading(false);
-         })
-         .catch((error) => {
-            setError(error.message);
-         })
-         .finally(() => {});
+         setSearchValue("?search=2022")
          setVisiblePopular(false);
          setVisibleNewGame(true);
          setVisibleSaleGame(false);
@@ -55,16 +47,7 @@ const HomePage = () => {
          setActiveCategory(index);
       } else if (index === 1) {
          setIsLoading(true);
-         axios
-         .get("https://633ae7ca471b8c395577f828.mockapi.io/items?popular=true")
-         .then((response) => {
-            setData(response.data);
-            setIsLoading(false);
-         })
-         .catch((error) => {
-            setError(error.message);
-         })
-         .finally(() => {});
+         setSearchValue("?popular=true")
          setVisiblePopular(true);
          setVisibleNewGame(false);
          setVisibleSaleGame(false);
@@ -73,16 +56,7 @@ const HomePage = () => {
          setActiveCategory(index);
       } else if (index === 2) {
          setIsLoading(true);
-         axios
-         .get("https://633ae7ca471b8c395577f828.mockapi.io/items?sale=true")
-         .then((response) => {
-            setData(response.data);
-            setIsLoading(false);
-         })
-         .catch((error) => {
-            setError(error.message);
-         })
-         .finally(() => {});
+         setSearchValue("?sale=true")
          setVisiblePopular(false);
          setVisibleNewGame(false);
          setVisibleSaleGame(true);
@@ -91,16 +65,7 @@ const HomePage = () => {
          setActiveCategory(index);
       } else if (index === 3) {
          setIsLoading(true);
-         axios
-         .get("https://633ae7ca471b8c395577f828.mockapi.io/items")
-         .then((response) => {
-            setData(response.data);
-            setIsLoading(false);
-         })
-         .catch((error) => {
-            setError(error.message);
-         })
-         .finally(() => {});
+         setSearchValue("")
          setVisiblePopular(false);
          setVisibleNewGame(false);
          setVisibleSaleGame(false);

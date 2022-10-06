@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import classes from "./Catalog.module.scss";
+import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
+import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
 import GameItem from "./gameItem/GameItem";
 import { useDispatch } from "react-redux";
-import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
-import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import axios from "axios";
+import classes from "./Catalog.module.scss";
 
 const Catalog = () => {
    const dispatch = useDispatch();
@@ -15,20 +15,7 @@ const Catalog = () => {
    const [visibleList, setVisibleList] = useState(false);
    const [selectListItem, setSelectListItem] = useState(null);
    const [error, setError] = useState("");
-
-   useEffect(() => {
-      fetch("https://633ae7ca471b8c395577f828.mockapi.io/items")
-         .then((response) => response.json())
-         .then((json) => {
-            setData(json);
-            setIsLoadingGame(false);
-         });
-   }, []);
-
-   const handlerClickViewCatalog = () => {
-      setViewCatalog(!viewCatalog);
-      dispatch(getViewCatalog(viewCatalog));
-   };
+   const [select, setSelect] = useState(null);
 
    const category = [
       "Все",
@@ -48,32 +35,30 @@ const Catalog = () => {
    const onChangeCategiry = (index) => {
       setIsLoadingGame(true);
       setSelectListItem(index);
+      setSelect(category[index]);
       setError("");
-      index === 0
-         ? axios
-              .get("https://633ae7ca471b8c395577f828.mockapi.io/items")
-              .then((response) => {
-                 setData(response.data);
-                 setIsLoadingGame(false);
-              })
-              .catch((error) => {
-                 setError(error.message);
-              })
-              .finally(() => {})
-         : axios
-              .get(
-                 "https://633ae7ca471b8c395577f828.mockapi.io/items?search=" +
-                    `${category[index]}`
-              )
-              .then((response) => {
-                 setData(response.data);
-                 setIsLoadingGame(false);
-              })
-              .catch((error) => {
-                 setError(error.message);
-              })
-              .finally(() => {});
    };
+   const handlerClickViewCatalog = () => {
+      setViewCatalog(!viewCatalog);
+      dispatch(getViewCatalog(viewCatalog));
+   };
+
+   useEffect(() => {
+      axios
+         .get(
+            `https://633ae7ca471b8c395577f828.mockapi.io/items${
+               !selectListItem ? `` : `?search=${select}`
+            }`
+         )
+         .then((response) => {
+            setData(response.data);
+            setIsLoadingGame(false);
+         })
+         .catch((error) => {
+            setError(error.message);
+         })
+         .finally(() => {});
+   }, [selectListItem, select]);
 
    return (
       <div className={classes.conteiner__catalog}>
@@ -124,7 +109,6 @@ const Catalog = () => {
                ))}
             </ul>
          </div>
-
          {viewCatalog && (
             <div className={classes.conteiner__catalog_game}>
                {isLoadingGame
