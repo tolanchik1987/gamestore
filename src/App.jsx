@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.scss";
 import About from "./components/about/About";
 import Cart from "./components/cart/Cart";
 import Catalog from "./components/catalog/Catalog";
@@ -9,6 +8,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import HomePage from "./components/homePage/HomePage";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
+import "./App.scss";
 
 const App = () => {
    return (

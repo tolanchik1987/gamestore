@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 import GameItem from "./gameItem/GameItem";
 import API from "../../API/API";
@@ -20,6 +19,7 @@ const Catalog = () => {
    const [sortListSelect, setSortListSelect] = useState(0);
    const [selectSort, setSelectSort] = useState(0);
    const [search, setSearch] = useState("");
+ 
 
    useEffect(() => {
       API.get(
@@ -99,18 +99,14 @@ const Catalog = () => {
                onClickSelectSortValue={onClickSelectSortValue}
             />
          </div>
-         {error ? (
-            <ErrorMessage error={error} />
-         ) : (
-            ""
-         )}
-         <div className={classes.conteiner__catalog_game}>
-            {isLoadingGame
-               ? [...new Array(6)].map((_, i) => (
-                    <LoadingSceletonItemGame key={i} />
-                 ))
-               : data.map((game) => <GameItem game={game} key={game.id} />)}
-         </div>
+         {error ? <ErrorMessage error={error} /> : ""}
+            <div className={classes.conteiner__catalog_game}>
+               {isLoadingGame
+                  ? [...new Array(6)].map((_, i) => (
+                     <LoadingSceletonItemGame key={i} />
+                    ))
+                  : data.map((game) => <GameItem game={game} key={game.id} />)}
+            </div>
       </div>
    );
 };
