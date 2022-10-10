@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
-import { getViewCatalog } from "../store/catalogReducer/catalogSlice";
 import GameItem from "./gameItem/GameItem";
 import API from "../../API/API";
-import { useDispatch } from "react-redux";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import classes from "./Catalog.module.scss";
+import Search from "../search/Search";
 
 const Catalog = () => {
-   const dispatch = useDispatch();
-   const [viewCatalog, setViewCatalog] = useState(true);
    const [data, setData] = useState([]);
    const [isLoadingGame, setIsLoadingGame] = useState(true);
    const [visibleList, setVisibleList] = useState(false);
@@ -19,11 +16,14 @@ const Catalog = () => {
    const [sortListView, setSortListView] = useState(false);
    const [sortListSelect, setSortListSelect] = useState(0);
    const [selectSort, setSelectSort] = useState(0);
+   const [search, setSearch] = useState("");
 
    useEffect(() => {
       API.get(
          `${
-            !selectListItem
+            search
+               ? `?title=${search}`
+               : !selectListItem
                ? `?sortBy=${selectSort}`
                : `?search=${selectCategory}&sortBy=${selectSort}`
          }`
@@ -34,9 +34,8 @@ const Catalog = () => {
          })
          .catch((error) => {
             setError(error.message);
-         })
-         .finally(() => {});
-   }, [selectListItem, selectCategory, selectSort]);
+         });
+   }, [selectListItem, selectCategory, selectSort, search]);
 
    const category = [
       "Все",
@@ -66,10 +65,7 @@ const Catalog = () => {
       setSelectCategory(category[index]);
       setError("");
    };
-   const handlerClickViewCatalog = () => {
-      setViewCatalog(!viewCatalog);
-      dispatch(getViewCatalog(viewCatalog));
-   };
+
    const onClickSelectSortValue = (index) => {
       setIsLoadingGame(true);
       setSortListSelect(index);
@@ -116,9 +112,7 @@ const Catalog = () => {
             </ul>
          </div>
          <div>
-            <button onClick={handlerClickViewCatalog}>
-               {!viewCatalog ? "Показать игры" : "Скрыть игры"}
-            </button>
+           <Search search={search} setSearch={setSearch}/>
          </div>
          <div
             className={classes.sortList}
@@ -150,15 +144,13 @@ const Catalog = () => {
             ""
          )}
 
-         {viewCatalog && (
-            <div className={classes.conteiner__catalog_game}>
-               {isLoadingGame
-                  ? [...new Array(6)].map((_, i) => (
-                       <LoadingSceletonItemGame key={i} />
-                    ))
-                  : data.map((game) => <GameItem game={game} key={game.id} />)}
-            </div>
-         )}
+         <div className={classes.conteiner__catalog_game}>
+            {isLoadingGame
+               ? [...new Array(6)].map((_, i) => (
+                    <LoadingSceletonItemGame key={i} />
+                 ))
+               : data.map((game) => <GameItem game={game} key={game.id} />)}
+         </div>
       </div>
    );
 };

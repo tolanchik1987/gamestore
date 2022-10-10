@@ -1,11 +1,5 @@
 @import "../catalog/Catalog.module.scss";
 
-i {
-   display: inline-block;
-   font-size: 34px;
-   margin-top: 150px;
-}
-
 .conteiner__gameInCart {
    margin-top: 25px;
    img {
@@ -36,22 +30,31 @@ i {
    .priceAllGame {
       border-top: 1px solid #555;
       color: greenyellow;
-		padding-top: 20px;
+      padding-top: 20px;
    }
-	.gameTitle {
-		> div {
-			margin-bottom: 30px;
-		}
-		.btnItem {
-			display: inline-block;
-			margin: 0 30px;
-			position: absolute;
-			margin-top: 10px;
-			color: rgb(255, 0, 0);
-			&:hover {
-				text-decoration: underline;
-				cursor: pointer;
-			}
-		}
-	}
+   .gameTitle {
+      > div {
+         margin-bottom: 30px;
+      }
+      .btnItem {
+         display: inline-block;
+         margin: 0 30px;
+         position: absolute;
+         margin-top: 10px;
+         color: rgb(255, 0, 0);
+         &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+         }
+      }
+   }
+}
+
+.cartImage {
+   i {
+      display: inline-block;
+      font-size: 34px;
+      margin: 50px 0px;
+      margin-left: -50px;
+   }
 }

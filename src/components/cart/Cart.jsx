@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteGameInCart } from "../store/cartReducer/cartSlice";
+import cartImage from "../../assets/img/cart.png"
 
 const Cart = () => {
    const dispatch = useDispatch();
@@ -39,7 +40,12 @@ const Cart = () => {
                </div>
             </div>
          ) : (
-            <i>"Корзина пуста"</i>
+            <div className={classes.cartImage}>
+               <i>"Корзина пуста"</i>
+               <div>
+                  <img src={cartImage} alt="" />
+               </div>
+            </div>
          )}
       </div>
    );

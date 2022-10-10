@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import GameItem from "../catalog/gameItem/GameItem";
-import API from "../../API/API";
 import PictureGameOnHomePage from "../SceletonItem/LoadingSceletonPictureGameOnHomePage/PictureGameOnHomePage";
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
-import classes from "./HomePage.module.scss";
 import JenersItem from "./jenersItem/JenersItem";
+import API from "../../API/API";
+import classes from "./HomePage.module.scss";
 
 const HomePage = () => {
    const [visiblePopular, setVisiblePopular] = useState(false);
@@ -27,7 +27,6 @@ const HomePage = () => {
          .catch((error) => {
             setError(error.message);
          })
-         .finally(() => {});
    }, [searchValue]);
 
    const handleClickCategory = (index) => {

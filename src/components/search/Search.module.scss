@@ -1,0 +1,22 @@
+.wrapper__search {
+    position: relative;
+    margin-bottom: 20px;
+    .search_image {
+       position: absolute;
+       top: 20px;
+       padding-left: 5px;
+       width: 16px;
+       height: 16px;
+    }
+    .input_search {
+       width: 190px;
+       height: 25px;
+       margin-top: 16px;
+       border-radius: 15px;
+       padding-left: 20px;
+       transition: width 0.3s ease;
+       &:focus {
+          width: 290px;
+       }
+    }
+ }
