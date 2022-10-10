@@ -1,0 +1,12 @@
+.sortItemListOn {
+    background-color: rgb(59, 59, 59);
+    padding: 5px 5px 0;
+    display: block;
+    &:hover {
+       cursor: pointer;
+       background-color: rgb(122, 122, 122);
+    }
+ }
+ .sortItemListOff {
+    display: none;
+ }

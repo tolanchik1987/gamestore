@@ -28,9 +28,6 @@
 
 .conteiner__catalog {
    font-size: 24px;
-   .errorMassege {
-      color: red;
-   }
    .sortList {
       font-size: 18px;
       cursor: pointer;
@@ -43,18 +40,7 @@
          display: inline;
          color: chartreuse;
       }
-      .sortItemListOn {
-         background-color: rgb(59, 59, 59);
-         padding: 5px 5px 0;
-         display: block;
-         &:hover {
-            cursor: pointer;
-            background-color: rgb(122, 122, 122);
-         }
-      }
-      .sortItemListOff {
-         display: none;
-      }
+      
    }
 
    button {
@@ -68,33 +54,5 @@
    b {
       margin-right: 20px;
    }
-   .janres {
-      list-style: none;
-      cursor: pointer;
-      font-size: 18px;
-      position: absolute;
-      top: 85px;
-      padding-right: 20px;
-      z-index: 3;
-      .visibleChengeCategory {
-         display: inline-block;
-      }
-      .icon {
-         position: absolute;
-         top: 4px;
-         left: 15px;
-      }
-      .displayListOn {
-         background-color: rgb(59, 59, 59);
-         padding: 5px 5px 0;
-         display: block;
-         &:hover {
-            cursor: pointer;
-            background-color: rgb(122, 122, 122);
-         }
-      }
-      .displayListOff {
-         display: none;
-      }
-   }
+   
 }

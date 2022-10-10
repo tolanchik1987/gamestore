@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 import GameItem from "./gameItem/GameItem";
 import API from "../../API/API";
 import classes from "./Catalog.module.scss";
 import Search from "../search/Search";
+import SearchCategory from "../searchCategory/SearchCategory";
+import Sort from "../sort/Sort";
+import ErrorMessage from "../error/ErrorMessage";
 
 const Catalog = () => {
    const [data, setData] = useState([]);
@@ -59,7 +62,7 @@ const Catalog = () => {
       { name: "сначала новые", oreder: "year&order=desc" },
    ];
 
-   const onChangeCategiry = (index) => {
+   const onChangeCategory = (index) => {
       setIsLoadingGame(true);
       setSelectListItem(index);
       setSelectCategory(category[index]);
@@ -75,75 +78,32 @@ const Catalog = () => {
 
    return (
       <div className={classes.conteiner__catalog}>
+         <SearchCategory
+            category={category}
+            selectListItem={selectListItem}
+            visibleList={visibleList}
+            setVisibleList={setVisibleList}
+            onChangeCategory={onChangeCategory}
+         />
          <div>
-            <ul
-               onClick={() => setVisibleList(!visibleList)}
-               className={classes.janres}
-            >
-               {!visibleList ? (
-                  <div className={classes.icon}>
-                     <FiChevronDown size={20} />
-                  </div>
-               ) : (
-                  <div className={classes.icon}>
-                     <FiChevronUp size={20} />
-                  </div>
-               )}
-               {selectListItem !== 0 && !selectListItem && (
-                  <div className={classes.visibleChengeCategory}>
-                     выберите категорию
-                  </div>
-               )}
-               {category[selectListItem]}
-               {category.map((item, index) => (
-                  <li
-                     onClick={() => onChangeCategiry(index)}
-                     className={
-                        visibleList
-                           ? classes.displayListOn
-                           : classes.displayListOff
-                     }
-                     key={item}
-                     value={index}
-                  >
-                     {item}
-                  </li>
-               ))}
-            </ul>
-         </div>
-         <div>
-           <Search search={search} setSearch={setSearch}/>
+            <Search search={search} setSearch={setSearch} />
          </div>
          <div
             className={classes.sortList}
             onClick={() => setSortListView(!sortListView)}
          >
-            <div>
-               Сортировать по: <p>{sortList[sortListSelect].name}</p>
-               {sortList.map((item, index) => (
-                  <div
-                     onClick={() => onClickSelectSortValue(index)}
-                     key={index}
-                     className={
-                        sortListView
-                           ? classes.sortItemListOn
-                           : classes.sortItemListOff
-                     }
-                  >
-                     {item.name}
-                  </div>
-               ))}
-            </div>
+            <Sort
+               sortListSelect={sortListSelect}
+               sortList={sortList}
+               sortListView={sortListView}
+               onClickSelectSortValue={onClickSelectSortValue}
+            />
          </div>
-
          {error ? (
-            <div className={classes.errorMassege}>
-               Ошибка получения данных: {error}
-            </div>
+            <ErrorMessage error={error} />
          ) : (
             ""
          )}
-
          <div className={classes.conteiner__catalog_game}>
             {isLoadingGame
                ? [...new Array(6)].map((_, i) => (
