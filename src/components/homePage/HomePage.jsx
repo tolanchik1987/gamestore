@@ -26,7 +26,7 @@ const HomePage = () => {
          })
          .catch((error) => {
             setError(error.message);
-         })
+         });
    }, [searchValue]);
 
    const handleClickCategory = (index) => {

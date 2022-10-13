@@ -15,31 +15,31 @@ const GameItem = ({ game }) => {
    };
 
    return (
-         <div className={classes.conteiner__game}>
-            <div onClick={handelClick}>
-               <div>
-                  <img src={game.image} alt="" />
-               </div>
-               <div>
-                  <h1>{game.title}</h1>
-               </div>
-               <div className={classes.border_genre}>
-                  <p>
-                     {game.genres.map((ganre, i) => (
-                        <i key={i}>{ganre}</i>
-                     ))}
-                  </p>
-               </div>
-               <div>
-                  <p>{game.description}</p>
-               </div>
+      <div className={classes.conteiner__game}>
+         <div onClick={handelClick}>
+            <div>
+               <img src={game.image} alt="" />
             </div>
-            <div className={classes.price}>
-               <div>
-                  <BtnPrice game={game} />
-               </div>
+            <div>
+               <h1>{game.title}</h1>
+            </div>
+            <div className={classes.border_genre}>
+               <p>
+                  {game.genres.map((ganre, i) => (
+                     <i key={i}>{ganre}</i>
+                  ))}
+               </p>
+            </div>
+            <div>
+               <p>{game.description}</p>
             </div>
          </div>
+         <div className={classes.price}>
+            <div>
+               <BtnPrice game={game} />
+            </div>
+         </div>
+      </div>
    );
 };
 

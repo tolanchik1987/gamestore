@@ -1,9 +1,14 @@
 import React from "react";
-import classes from "./Sort.module.scss"
+import classes from "./Sort.module.scss";
 
-const Sort = ({sortListSelect,  sortList, sortListView, onClickSelectSortValue}) => {
+const Sort = ({
+   sortListSelect,
+   sortList,
+   sortListView,
+   onClickSelectSortValue,
+}) => {
    return (
-      <div>  
+      <div>
          Сортировать по: <p>{sortList[sortListSelect].name}</p>
          {sortList.map((item, index) => (
             <div

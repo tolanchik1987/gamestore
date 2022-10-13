@@ -22,11 +22,15 @@ const JenersItem = () => {
       <div>
          <div className={classes.categoryList}>
             <ul>
-               {category.map((item,index) => <li
-                  key={item}
-                  className={activeJanre === index ? classes.active : ""}
-                  onClick={() => setActiveJanre(index)}
-               >{item}</li>)}
+               {category.map((item, index) => (
+                  <li
+                     key={item}
+                     className={activeJanre === index ? classes.active : ""}
+                     onClick={() => setActiveJanre(index)}
+                  >
+                     {item}
+                  </li>
+               ))}
             </ul>
          </div>
       </div>

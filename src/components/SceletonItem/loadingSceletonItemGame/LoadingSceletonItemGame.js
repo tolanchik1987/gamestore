@@ -1,6 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
-import classes from "./LoadingSceletonItemGame.module.scss"
+import classes from "./LoadingSceletonItemGame.module.scss";
 
 const LoadingSceletonItemGame = (props) => (
    <ContentLoader

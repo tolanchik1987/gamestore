@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import debounce from "lodash.debounce";
+import qs from "qs";
+import { useNavigate } from "react-router-dom";
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
+import ErrorMessage from "../error/ErrorMessage";
 import GameItem from "./gameItem/GameItem";
-import API from "../../API/API";
-import classes from "./Catalog.module.scss";
 import Search from "../search/Search";
 import SearchCategory from "../searchCategory/SearchCategory";
 import Sort from "../sort/Sort";
-import ErrorMessage from "../error/ErrorMessage";
+import API from "../../API/API";
+import classes from "./Catalog.module.scss";
 
 const Catalog = () => {
    const [data, setData] = useState([]);
@@ -19,7 +22,25 @@ const Catalog = () => {
    const [sortListSelect, setSortListSelect] = useState(0);
    const [selectSort, setSelectSort] = useState(0);
    const [search, setSearch] = useState("");
- 
+   const [value, setValue] = useState();
+   const navigate = useNavigate();
+   const sortRef = useRef();
+   const categoryRef = useRef();
+
+   useEffect(() => {
+      const handelCklickBody = (e) => {
+         if (!e.path.includes(sortRef.current)) {
+            setSortListView(false);
+         }
+         if (!e.path.includes(categoryRef.current)) {
+            setVisibleList(false);
+         }
+      };
+      document.body.addEventListener("click", handelCklickBody);
+      return () => {
+         document.body.removeEventListener("click", handelCklickBody);
+      };
+   }, []);
 
    useEffect(() => {
       API.get(
@@ -38,7 +59,17 @@ const Catalog = () => {
          .catch((error) => {
             setError(error.message);
          });
-   }, [selectListItem, selectCategory, selectSort, search]);
+   }, [selectListItem, selectCategory, selectSort, search, navigate]);
+
+   useEffect(() => {
+      const queryString = qs.stringify({
+         selectListItem,
+         selectCategory,
+         selectSort,
+         search,
+      });
+      navigate(`?${queryString}`);
+   }, [selectListItem, selectCategory, selectSort, search, navigate]);
 
    const category = [
       "Все",
@@ -76,19 +107,30 @@ const Catalog = () => {
       setError("");
    };
 
+   const onChangeSerachInput = debounce((value) => {
+      setSearch(value);
+   }, 250);
+
    return (
       <div className={classes.conteiner__catalog}>
-         <SearchCategory
-            category={category}
-            selectListItem={selectListItem}
-            visibleList={visibleList}
-            setVisibleList={setVisibleList}
-            onChangeCategory={onChangeCategory}
-         />
+         <div ref={categoryRef}>
+            <SearchCategory
+               category={category}
+               selectListItem={selectListItem}
+               visibleList={visibleList}
+               setVisibleList={setVisibleList}
+               onChangeCategory={onChangeCategory}
+            />
+         </div>
          <div>
-            <Search search={search} setSearch={setSearch} />
+            <Search
+               value={value}
+               setValue={setValue}
+               onChangeSerachInput={onChangeSerachInput}
+            />
          </div>
          <div
+            ref={sortRef}
             className={classes.sortList}
             onClick={() => setSortListView(!sortListView)}
          >
@@ -100,13 +142,13 @@ const Catalog = () => {
             />
          </div>
          {error ? <ErrorMessage error={error} /> : ""}
-            <div className={classes.conteiner__catalog_game}>
-               {isLoadingGame
-                  ? [...new Array(6)].map((_, i) => (
-                     <LoadingSceletonItemGame key={i} />
-                    ))
-                  : data.map((game) => <GameItem game={game} key={game.id} />)}
-            </div>
+         <div className={classes.conteiner__catalog_game}>
+            {isLoadingGame
+               ? [...new Array(6)].map((_, i) => (
+                    <LoadingSceletonItemGame key={i} />
+                 ))
+               : data.map((game) => <GameItem game={game} key={game.id} />)}
+         </div>
       </div>
    );
 };

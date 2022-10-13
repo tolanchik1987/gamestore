@@ -1,12 +1,11 @@
 import React from "react";
-import classes from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteGameInCart } from "../store/cartReducer/cartSlice";
-import cartImage from "../../assets/img/cart.png"
+import cartImage from "../../assets/img/cart.png";
+import classes from "./Cart.module.scss";
 
 const Cart = () => {
    const dispatch = useDispatch();
-
    const items = useSelector((state) => state.cart.gameInCart);
    const totalPrice = items.reduce((acc, game) => acc + game.price, 0);
 
