@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import classes from "./Sort.module.scss";
 
-const Sort = ({
+const Sort = memo(({
    sortListSelect,
    sortList,
    sortListView,
@@ -25,6 +25,6 @@ const Sort = ({
          ))}
       </div>
    );
-};
+})
 
 export default Sort;

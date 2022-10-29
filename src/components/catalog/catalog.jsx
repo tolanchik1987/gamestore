@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import debounce from "lodash.debounce";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
@@ -93,23 +93,23 @@ const Catalog = () => {
       { name: "сначала новые", oreder: "year&order=desc" },
    ];
 
-   const onChangeCategory = (index) => {
+   const onChangeCategory = useCallback((index) => {
       setIsLoadingGame(true);
       setSelectListItem(index);
       setSelectCategory(category[index]);
       setError("");
-   };
+   },[])
 
-   const onClickSelectSortValue = (index) => {
+   const onClickSelectSortValue = useCallback((index) => {
       setIsLoadingGame(true);
       setSortListSelect(index);
       setSelectSort(sortList[index].order);
       setError("");
-   };
+   },[])
 
-   const onChangeSerachInput = debounce((value) => {
+   const onChangeSerachInput = useCallback(debounce((value) => {
       setSearch(value);
-   }, 250);
+   }, 250),[])
 
    return (
       <div className={classes.conteiner__catalog}>

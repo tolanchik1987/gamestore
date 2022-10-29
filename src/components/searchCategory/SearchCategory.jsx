@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import classes from "./SearchCategory.module.scss";
 
-const SearchCategory = ({
+const SearchCategory = memo(({
    category,
    selectListItem,
    visibleList,
@@ -47,6 +47,6 @@ const SearchCategory = ({
          </ul>
       </div>
    );
-};
+})
 
 export default SearchCategory;
