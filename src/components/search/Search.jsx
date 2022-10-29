@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import searchImage from "../../assets/img/search.png";
 import classes from "./Search.module.scss"
 
-const Search = ({ value, onChangeSerachInput }) => {
+const Search = memo(({ value, onChangeSerachInput }) => {
 
    return (
       <div className={classes.wrapper__search}>
@@ -16,6 +16,6 @@ const Search = ({ value, onChangeSerachInput }) => {
          />
       </div>
    );
-};
+})
 
 export default Search;
