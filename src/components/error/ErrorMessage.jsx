@@ -1,12 +1,12 @@
-import React from "react";
+import React, { memo } from "react";
 import classes from "./ErrorMessage.module.scss";
 
-const ErrorMessage = ({ error }) => {
+const ErrorMessage = memo(({ error }) => {
    return (
       <div className={classes.errorMassege}>
          Ошибка получения данных: {error}
       </div>
    );
-};
+})
 
 export default ErrorMessage;

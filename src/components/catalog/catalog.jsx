@@ -9,6 +9,7 @@ import Search from "../search/Search";
 import SearchCategory from "../searchCategory/SearchCategory";
 import Sort from "../sort/Sort";
 import API from "../../API/API";
+//import { useGetItemsQuery } from "../../API/ApiSlice"              //! RTKQuery
 import classes from "./Catalog.module.scss";
 
 const Catalog = () => {
@@ -26,6 +27,13 @@ const Catalog = () => {
    const navigate = useNavigate();
    const sortRef = useRef();
    const categoryRef = useRef();
+   // const {                                     //! RTKQuery
+   //    data: items = [],
+   //    isLoading,
+   //    isFetching,
+   //    isError,
+   //    isSuccess,
+   // } = useGetItemsQuery()
 
    useEffect(() => {
       const handelCklickBody = (e) => {
