@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import ContentLoader from "react-content-loader";
 import classes from "./LoadingSceletonItemGame.module.scss";
 
-const LoadingSceletonItemGame = (props) => (
+const LoadingSceletonItemGame = memo((props) => (
    <ContentLoader
       className={classes.conteiner__game}
       speed={1}
@@ -21,6 +21,6 @@ const LoadingSceletonItemGame = (props) => (
       <rect x="232" y="460" rx="25" ry="25" width="153" height="38" />
       <rect x="0" y="249" rx="10" ry="10" width="180" height="24" />
    </ContentLoader>
-);
+))
 
 export default LoadingSceletonItemGame;

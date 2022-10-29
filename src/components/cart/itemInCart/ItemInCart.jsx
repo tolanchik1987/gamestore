@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import classes from "./ItemInCart.module.scss";
 
-const ItemInCart = () => {
+const ItemInCart = memo(() => {
    const items = useSelector((state) => state.cart.gameInCart);
    const increment = items.length;
 
@@ -11,6 +11,6 @@ const ItemInCart = () => {
          <div className={classes.increment}>{increment}</div>
       </div>
    );
-};
+})
 
 export default ItemInCart;

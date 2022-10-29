@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import ContentLoader from "react-content-loader";
 import classes from "./PictureGameOnHomePage.module.scss";
 
-const PictureGameOnHomePage = (props) => (
+const PictureGameOnHomePage = memo((props) => (
    <ContentLoader
       className={classes.contentHomePage}
       speed={1}
@@ -15,6 +15,6 @@ const PictureGameOnHomePage = (props) => (
    >
       <rect x="0" y="0" rx="10" ry="10" width="150" height="86" />
    </ContentLoader>
-);
+))
 
 export default PictureGameOnHomePage;

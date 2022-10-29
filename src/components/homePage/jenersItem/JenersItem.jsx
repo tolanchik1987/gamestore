@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import classes from "./JenersItem.module.scss";
 
-const JenersItem = () => {
+const JenersItem = memo(() => {
    const [activeJanre, setActiveJanre] = useState(0);
 
    const category = [
@@ -35,6 +35,6 @@ const JenersItem = () => {
          </div>
       </div>
    );
-};
+})
 
 export default JenersItem;

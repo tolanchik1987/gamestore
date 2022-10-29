@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteGameInCart } from "../store/cartReducer/cartSlice";
 import classes from "./BtnPrice.module.scss";
 
-const BtnPrice = ({ game }) => {
+const BtnPrice = memo(({ game }) => {
    const dispatch = useDispatch();
    const items = useSelector((state) => state.cart.gameInCart);
    const itemsInCart = items.some((i) => i.id === game.id);
@@ -33,6 +33,6 @@ const BtnPrice = ({ game }) => {
          )}
       </div>
    );
-};
+})
 
 export default BtnPrice;
