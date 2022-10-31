@@ -6,7 +6,10 @@ import App from "./App";
 import { store } from "./components/store/store";
 import "./index.scss";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+   const root = ReactDOM.createRoot(rootElement);
 root.render(
    <BrowserRouter>
       <Provider store={store}>
@@ -14,3 +17,4 @@ root.render(
       </Provider>
    </BrowserRouter>
 );
+}

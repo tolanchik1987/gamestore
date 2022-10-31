@@ -10,7 +10,7 @@ import HomePage from "./components/homePage/HomePage";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
 import "./App.scss";
 
-const App = () => {
+const App: React.FC = () => {
    return (
       <div className="conteiner__page">
          <header className="conteiner__header">
