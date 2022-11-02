@@ -13,11 +13,11 @@ const HomePage = () => {
    const [visibleCategory, setVisibleCategory] = useState(false);
    const [visiblePictureGame, setVisiblePictureGame] = useState(true);
    const [activeCategory, setActiveCategory] = useState(null);
-   const [data, setData] = useState([]);
+   const [data, setData] = useState();
    const [isLoading, setIsLoading] = useState(true);
    const [error, setError] = useState("");
    const [searchValue, setSearchValue] = useState("");
-
+console.log(data)
    useEffect(() => {
       API.get(searchValue)
          .then((response) => {
@@ -95,7 +95,7 @@ const HomePage = () => {
                         ? [...new Array(6)].map((_, i) => (
                              <PictureGameOnHomePage key={i} />
                           ))
-                        : data.map((game) => (
+                        : data && data.map((game) => (
                              <img key={game.id} src={game.image} alt="" />
                           ))}
                   </div>
@@ -106,7 +106,7 @@ const HomePage = () => {
                         ? [...new Array(3)].map((_, i) => (
                              <LoadingSceletonItemGame key={i} />
                           ))
-                        : data.map((game) => (
+                        : data && data.map((game) => (
                              <GameItem game={game} key={game.id} />
                           ))}
                   </div>
@@ -117,7 +117,7 @@ const HomePage = () => {
                         ? [...new Array(3)].map((_, i) => (
                              <LoadingSceletonItemGame key={i} />
                           ))
-                        : data.map((game) => (
+                        : data && data.map((game) => (
                              <GameItem game={game} key={game.id} />
                           ))}
                   </div>
@@ -128,7 +128,7 @@ const HomePage = () => {
                         ? [...new Array(3)].map((_, i) => (
                              <LoadingSceletonItemGame key={i} />
                           ))
-                        : data.map((game) => (
+                        : data && data.map((game) => (
                              <GameItem game={game} key={game.id} />
                           ))}
                   </div>

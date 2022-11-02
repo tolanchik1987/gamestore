@@ -1,11 +1,11 @@
-import React, { memo } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { gameChecked } from "../../store/cartReducer/cartSlice";
 import BtnPrice from "../../btn_price/BtnPrice";
 import classes from "./GameItem.module.scss";
 
-const GameItem = memo(({ game }) => {
+const GameItem = React.memo(({ game }) => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
 

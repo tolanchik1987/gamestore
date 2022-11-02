@@ -1,13 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteGameInCart } from "../store/cartReducer/cartSlice";
 import classes from "./BtnPrice.module.scss";
 
-const BtnPrice = memo(({ game }) => {
+const BtnPrice = React.memo(({ game }) => {
    const dispatch = useDispatch();
-   const items = useSelector((state) => state.cart.gameInCart);
+   const items = useSelector(state => state.cart.gameInCart);
    const itemsInCart = items.some((i) => i.id === game.id);
-
    const addGameToCart = () => {
       if (!itemsInCart) {
          dispatch(addToCart(game));
