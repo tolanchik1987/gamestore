@@ -9,4 +9,9 @@
       border: 8px double white;
       text-align: center;
    }
+   a {
+      &:hover {
+         color: chartreuse;
+      }
+   }
 }
