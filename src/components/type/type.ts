@@ -1,8 +1,7 @@
-export type errorMessageType = {
+export type ErrorMessageType = {
    error: string,
 }
-export type dataType = [
-   game:{
+export type DataType = {
       description: string,
       genres: string[],
       id: number,
@@ -13,21 +12,19 @@ export type dataType = [
       title: string,
       video: string,
       year: number
-   }
-]
+}[]
 
-export type gameType = {
-   game:{
-      description: string,
-      genres: string[],
-      id: number,
-      image: string,
-      popular: boolean,
-      price: number,
-      sale: boolean,
-      title: string,
-      video: string,
-      year: number
-   }
+
+export type GameType = {
+   description: string,
+   genres: string[],
+   id: number,
+   image: string,
+   popular: boolean,
+   price: number,
+   sale: boolean,
+   title: string,
+   video: string,
+   year: number
 }
 

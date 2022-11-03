@@ -11,6 +11,7 @@ import Sort from "../sort/Sort";
 import API from "../../API/API";
 //import { useGetItemsQuery } from "../../API/ApiSlice"              //! RTKQuery
 import classes from "./Catalog.module.scss";
+import { DataType, GameType } from "../type/type";
 
 const Catalog = () => {
    const [data, setData] = useState([]);
@@ -23,7 +24,7 @@ const Catalog = () => {
    const [sortListSelect, setSortListSelect] = useState(0);
    const [selectSort, setSelectSort] = useState(0);
    const [search, setSearch] = useState("");
-   const [value, setValue] = useState();
+   const [value, setValue] = useState("");
    const navigate = useNavigate();
    const sortRef = useRef();
    const categoryRef = useRef();
@@ -79,7 +80,7 @@ const Catalog = () => {
       navigate(`?${queryString}`);
    }, [selectListItem, selectCategory, selectSort, search, navigate]);
 
-   const category = [
+   const category= [
       "Все",
       "Экшен",
       "Приключения",
@@ -93,12 +94,14 @@ const Catalog = () => {
       "Глубокий сюжет",
       "Протагонистка",
    ];
-
+   
+   //type sortListType = {name: string, order: string}[]
+   
    const sortList = [
       { name: "цена меньше", order: "price&order=asc" },
       { name: "цена больше", order: "price&order=desc" },
       { name: "по алфавиту", order: "title" },
-      { name: "сначала новые", oreder: "year&order=desc" },
+      { name: "сначала новые", order: "year&order=desc" },
    ];
 
    const onChangeCategory = useCallback((index) => {
@@ -155,7 +158,7 @@ const Catalog = () => {
                ? [...new Array(6)].map((_, i) => (
                     <LoadingSceletonItemGame key={i} />
                  ))
-               : data.map((game) => <GameItem game={game} key={game.id} />)}
+               : data && data.map((game) => <GameItem game={game} key={game.id} />)}
          </div>
       </div>
    );

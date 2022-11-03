@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React from "react";
 import classes from "./Sort.module.scss";
 
-const Sort = memo(({
+const Sort = React.memo(({
    sortListSelect,
    sortList,
    sortListView,

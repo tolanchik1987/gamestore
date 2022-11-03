@@ -1,11 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, deleteGameInCart } from "../store/cartReducer/cartSlice";
+import { addToCart, deleteGameInCart, gameInCartSelector } from "../store/cartReducer/cartSlice";
+import { GameType } from "../type/type";
 import classes from "./BtnPrice.module.scss";
 
-const BtnPrice = React.memo(({ game }) => {
+type propsType = {
+   game: GameType,
+}
+
+const BtnPrice: React.FC<propsType> = React.memo(({ game }) => {
    const dispatch = useDispatch();
-   const items = useSelector(state => state.cart.gameInCart);
+   const items: GameType[] = useSelector(gameInCartSelector);
    const itemsInCart = items.some((i) => i.id === game.id);
    const addGameToCart = () => {
       if (!itemsInCart) {

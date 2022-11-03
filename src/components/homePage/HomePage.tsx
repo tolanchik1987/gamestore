@@ -5,19 +5,20 @@ import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/Loa
 import JenersItem from "./jenersItem/JenersItem";
 import API from "../../API/API";
 import classes from "./HomePage.module.scss";
+import { GameType } from "../type/type";
 
-const HomePage = () => {
-   const [visiblePopular, setVisiblePopular] = useState(false);
-   const [visibleNewGame, setVisibleNewGame] = useState(false);
-   const [visibleSaleGame, setVisibleSaleGame] = useState(false);
-   const [visibleCategory, setVisibleCategory] = useState(false);
-   const [visiblePictureGame, setVisiblePictureGame] = useState(true);
-   const [activeCategory, setActiveCategory] = useState(null);
-   const [data, setData] = useState();
-   const [isLoading, setIsLoading] = useState(true);
-   const [error, setError] = useState("");
-   const [searchValue, setSearchValue] = useState("");
-console.log(data)
+const HomePage: React.FC = () => {
+   const [visiblePopular, setVisiblePopular] = useState<boolean>(false);
+   const [visibleNewGame, setVisibleNewGame] = useState<boolean>(false);
+   const [visibleSaleGame, setVisibleSaleGame] = useState<boolean>(false);
+   const [visibleCategory, setVisibleCategory] = useState<boolean>(false);
+   const [visiblePictureGame, setVisiblePictureGame] = useState<boolean>(true);
+   const [activeCategory, setActiveCategory] = useState<number | null>(null);
+   const [data, setData] = useState<GameType[]>();
+   const [isLoading, setIsLoading] = useState<boolean>(true);
+   const [error, setError] = useState<string>("");
+   const [searchValue, setSearchValue] = useState<string>("");
+
    useEffect(() => {
       API.get(searchValue)
          .then((response) => {
@@ -29,7 +30,7 @@ console.log(data)
          });
    }, [searchValue]);
 
-   const handleClickCategory = (index) => {
+   const handleClickCategory = (index:number) => {
       if (index === 0) {
          setIsLoading(true);
          setSearchValue("?search=2022");
@@ -69,7 +70,7 @@ console.log(data)
       }
    };
 
-   const category = ["Новинки", "Популярные", "Скидки", "Жанры"];
+   const category: string[] = ["Новинки", "Популярные", "Скидки", "Жанры"];
 
    return (
       <div className={classes.conteiner__homePage}>

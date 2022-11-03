@@ -23,5 +23,7 @@ const cartSlice = createSlice({
    },
 });
 
+export const gameInCartSelector = (state) => state.cart.gameInCart;
+
 export const { addToCart, deleteGameInCart, gameChecked } = cartSlice.actions;
 export default cartSlice.reducer;

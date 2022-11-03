@@ -1,10 +1,10 @@
 import React, { memo, useState } from "react";
 import classes from "./JenersItem.module.scss";
 
-const JenersItem = memo(() => {
-   const [activeJanre, setActiveJanre] = useState(0);
+const JenersItem: React.FC = memo(() => {
+   const [activeJanre, setActiveJanre] = useState<number>(0);
 
-   const category = [
+   const category: string[] = [
       "Экшен",
       "Приключения",
       "Стратегии",
