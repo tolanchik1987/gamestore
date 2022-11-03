@@ -11,23 +11,23 @@ import Sort from "../sort/Sort";
 import API from "../../API/API";
 //import { useGetItemsQuery } from "../../API/ApiSlice"              //! RTKQuery
 import classes from "./Catalog.module.scss";
-import { DataType, GameType } from "../type/type";
+import { GameType } from "../type/type";
 
-const Catalog = () => {
-   const [data, setData] = useState([]);
-   const [isLoadingGame, setIsLoadingGame] = useState(true);
-   const [visibleList, setVisibleList] = useState(false);
-   const [selectListItem, setSelectListItem] = useState(null);
-   const [error, setError] = useState("");
-   const [selectCategory, setSelectCategory] = useState(null);
-   const [sortListView, setSortListView] = useState(false);
-   const [sortListSelect, setSortListSelect] = useState(0);
-   const [selectSort, setSelectSort] = useState(0);
-   const [search, setSearch] = useState("");
-   const [value, setValue] = useState("");
+const Catalog: React.FC = () => {
+   const [data, setData] = useState<GameType[]>([]);
+   const [isLoadingGame, setIsLoadingGame] = useState<boolean>(true);
+   const [visibleList, setVisibleList] = useState<boolean>(false);
+   const [selectListItem, setSelectListItem] = useState<number>(0);
+   const [error, setError] = useState<string>("");
+   const [selectCategory, setSelectCategory] = useState<string | null>(null);
+   const [sortListView, setSortListView] = useState<boolean>(false);
+   const [sortListSelect, setSortListSelect] = useState<number>(0);
+   const [selectSort, setSelectSort] = useState<string | number>(0);
+   const [search, setSearch] = useState<string>("");
+   const [value, setValue] = useState<string>("");
    const navigate = useNavigate();
-   const sortRef = useRef();
-   const categoryRef = useRef();
+   const sortRef = useRef<HTMLDivElement>(null);
+   const categoryRef = useRef<HTMLDivElement>(null);
    // const {                                     //! RTKQuery
    //    data: items = [],
    //    isLoading,
@@ -37,7 +37,7 @@ const Catalog = () => {
    // } = useGetItemsQuery()
 
    useEffect(() => {
-      const handelCklickBody = (e) => {
+      const handelCklickBody = (e:any) => {
          if (!e.path.includes(sortRef.current)) {
             setSortListView(false);
          }
@@ -80,7 +80,7 @@ const Catalog = () => {
       navigate(`?${queryString}`);
    }, [selectListItem, selectCategory, selectSort, search, navigate]);
 
-   const category= [
+   const category: string[]= [
       "Все",
       "Экшен",
       "Приключения",
@@ -95,30 +95,31 @@ const Catalog = () => {
       "Протагонистка",
    ];
    
-   //type sortListType = {name: string, order: string}[]
+   type sortListType = {name: string, order: string}[]
    
-   const sortList = [
+   const sortList: sortListType= [
       { name: "цена меньше", order: "price&order=asc" },
       { name: "цена больше", order: "price&order=desc" },
       { name: "по алфавиту", order: "title" },
       { name: "сначала новые", order: "year&order=desc" },
    ];
 
-   const onChangeCategory = useCallback((index) => {
+   const onChangeCategory = useCallback((index: number) => {
       setIsLoadingGame(true);
       setSelectListItem(index);
       setSelectCategory(category[index]);
       setError("");
    },[])
 
-   const onClickSelectSortValue = useCallback((index) => {
+   const onClickSelectSortValue = useCallback((index: number) => {
       setIsLoadingGame(true);
       setSortListSelect(index);
       setSelectSort(sortList[index].order);
       setError("");
    },[])
 
-   const onChangeSerachInput = useCallback(debounce((value) => {
+   const onChangeSerachInput = useCallback(debounce((value: string) => {
+      setValue(value)
       setSearch(value);
    }, 250),[])
 

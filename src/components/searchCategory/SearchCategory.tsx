@@ -2,7 +2,15 @@ import React, { memo } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import classes from "./SearchCategory.module.scss";
 
-const SearchCategory = memo(({
+type propsType = {
+   category: string[],
+   selectListItem: number,
+   visibleList: boolean,
+   setVisibleList: (visibleList:boolean) => void,
+   onChangeCategory: (index: number) => void,
+}
+
+const SearchCategory: React.FC<propsType> = memo(({
    category,
    selectListItem,
    visibleList,

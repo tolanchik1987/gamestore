@@ -2,7 +2,18 @@ import React, { memo } from "react";
 import searchImage from "../../assets/img/search.png";
 import classes from "./Search.module.scss"
 
-const Search = memo(({ value, onChangeSerachInput }) => {
+type propsType = {
+   value: string,
+   onChangeSerachInput: (e:string) => void
+   setValue: (e:string) => void
+}
+
+const Search: React.FC<propsType> = memo(({ value, onChangeSerachInput, setValue }) => {
+
+   const onChange = (val:string) => {
+      onChangeSerachInput(val)
+      setValue(val)
+   }
 
    return (
       <div className={classes.wrapper__search}>
@@ -12,7 +23,7 @@ const Search = memo(({ value, onChangeSerachInput }) => {
             type="search"
             placeholder="Введите название игры"
             value={value}
-            onChange={(e) => onChangeSerachInput(e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
          />
       </div>
    );
