@@ -1,9 +1,10 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
+import { gameInCartSelector } from "../../store/cartReducer/cartSlice";
 import classes from "./ItemInCart.module.scss";
 
-const ItemInCart = memo(() => {
-   const items = useSelector((state) => state.cart.gameInCart);
+const ItemInCart: React.FC = memo(() => {
+   const items = useSelector(gameInCartSelector);
    const increment = items.length;
 
    return (

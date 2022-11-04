@@ -2,17 +2,17 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavigateFunction, NavLink, useNavigate } from "react-router-dom";
-import { DataType } from "../../type/type";
-import { gameInCartSelector } from '../../store/cartReducer/cartSlice'
+import { GameType } from "../../types/type";
+import { gameInCartSelector } from "../../store/cartReducer/cartSlice";
 import ItemInCart from "../../cart/itemInCart/ItemInCart";
 import classes from "./Navbar.module.scss";
 
 const Navbar: React.FC = () => {
    const [activeLink, setActiveLink] = useState<number>(0);
-   const items: DataType = useSelector(gameInCartSelector);
+   const items: GameType[] = useSelector(gameInCartSelector);
    const navigate: NavigateFunction = useNavigate();
 
-   const handelClick = ():void => {
+   const handelClick = (): void => {
       navigate("/home");
    };
 

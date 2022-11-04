@@ -5,7 +5,7 @@ import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/Loa
 import JenersItem from "./jenersItem/JenersItem";
 import API from "../../API/API";
 import classes from "./HomePage.module.scss";
-import { GameType } from "../type/type";
+import { GameType } from "../types/type";
 
 const HomePage: React.FC = () => {
    const [visiblePopular, setVisiblePopular] = useState<boolean>(false);
@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
          });
    }, [searchValue]);
 
-   const handleClickCategory = (index:number) => {
+   const handleClickCategory = (index: number) => {
       if (index === 0) {
          setIsLoading(true);
          setSearchValue("?search=2022");
@@ -96,7 +96,8 @@ const HomePage: React.FC = () => {
                         ? [...new Array(6)].map((_, i) => (
                              <PictureGameOnHomePage key={i} />
                           ))
-                        : data && data.map((game) => (
+                        : data &&
+                          data.map((game) => (
                              <img key={game.id} src={game.image} alt="" />
                           ))}
                   </div>
@@ -107,7 +108,8 @@ const HomePage: React.FC = () => {
                         ? [...new Array(3)].map((_, i) => (
                              <LoadingSceletonItemGame key={i} />
                           ))
-                        : data && data.map((game) => (
+                        : data &&
+                          data.map((game) => (
                              <GameItem game={game} key={game.id} />
                           ))}
                   </div>
@@ -118,7 +120,8 @@ const HomePage: React.FC = () => {
                         ? [...new Array(3)].map((_, i) => (
                              <LoadingSceletonItemGame key={i} />
                           ))
-                        : data && data.map((game) => (
+                        : data &&
+                          data.map((game) => (
                              <GameItem game={game} key={game.id} />
                           ))}
                   </div>
@@ -129,7 +132,8 @@ const HomePage: React.FC = () => {
                         ? [...new Array(3)].map((_, i) => (
                              <LoadingSceletonItemGame key={i} />
                           ))
-                        : data && data.map((game) => (
+                        : data &&
+                          data.map((game) => (
                              <GameItem game={game} key={game.id} />
                           ))}
                   </div>

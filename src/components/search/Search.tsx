@@ -2,17 +2,17 @@ import React, { memo } from "react";
 import searchImage from "../../assets/img/search.png";
 import classes from "./Search.module.scss"
 
-type propsType = {
+type SearchPropsType = {
    value: string,
    onChangeSerachInput: (e:string) => void
    setValue: (e:string) => void
 }
 
-const Search: React.FC<propsType> = memo(({ value, onChangeSerachInput, setValue }) => {
+const Search: React.FC<SearchPropsType> = memo(({ value, onChangeSerachInput, setValue }) => {
 
-   const onChange = (val:string) => {
-      onChangeSerachInput(val)
-      setValue(val)
+   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+      onChangeSerachInput(e.target.value)
+      setValue(e.target.value)
    }
 
    return (
@@ -23,7 +23,7 @@ const Search: React.FC<propsType> = memo(({ value, onChangeSerachInput, setValue
             type="search"
             placeholder="Введите название игры"
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={onChange}
          />
       </div>
    );

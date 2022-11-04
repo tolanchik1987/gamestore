@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import BtnPrice from "../../btn_price/BtnPrice";
+import { gameSelectSelector } from "../../store/cartReducer/cartSlice";
+import { GameType } from "../../types/type";
 import classes from "./GameInfo.module.scss";
 
-const GameInfo = () => {
-   const game = useSelector((state) => state.cart.gameSelected);
+const GameInfo: React.FC = () => {
+   const game: GameType = useSelector(gameSelectSelector);
 
    return (
       <div className={classes.conteiner__game_info}>
@@ -21,9 +23,7 @@ const GameInfo = () => {
             <img src={game.image} alt="" />
             <h1>{game.title}</h1>
             <div>
-               {game.genres.map((ganre, i) => (
-                  <i key={i}>{ganre}</i>
-               ))}
+               {game && game.genres.map((ganre, i) => <i key={i}>{ganre}</i>)}
             </div>
             <div>
                <p>{game.description}</p>

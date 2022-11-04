@@ -3,18 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { gameChecked } from "../../store/cartReducer/cartSlice";
 import BtnPrice from "../../btn_price/BtnPrice";
-import { GameType } from "../../type/type";
+import { GameType } from "../../types/type";
 import classes from "./GameItem.module.scss";
 
-type propsType = {
-   game: GameType,
-}
+type GameItemPropsType = {
+   game: GameType;
+};
 
-const GameItem: React.FC<propsType> = React.memo(({ game }) => {
+const GameItem: React.FC<GameItemPropsType> = React.memo(({ game }) => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
-   const handelClick = ():void => {
+   const handelClick = (): void => {
       dispatch(gameChecked(game));
       navigate("/GameInfo");
    };
@@ -30,9 +30,8 @@ const GameItem: React.FC<propsType> = React.memo(({ game }) => {
             </div>
             <div className={classes.border_genre}>
                <p>
-                  {game && game.genres.map((ganre, i) => (
-                     <i key={i}>{ganre}</i>
-                  ))}
+                  {game &&
+                     game.genres.map((ganre, i) => <i key={i}>{ganre}</i>)}
                </p>
             </div>
             <div>
@@ -46,6 +45,6 @@ const GameItem: React.FC<propsType> = React.memo(({ game }) => {
          </div>
       </div>
    );
-})
+});
 
 export default GameItem;

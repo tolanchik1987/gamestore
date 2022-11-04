@@ -1,14 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, deleteGameInCart, gameInCartSelector } from "../store/cartReducer/cartSlice";
-import { GameType } from "../type/type";
+import {
+   addToCart,
+   deleteGameInCart,
+   gameInCartSelector,
+} from "../store/cartReducer/cartSlice";
+import { GameType } from "../types/type";
 import classes from "./BtnPrice.module.scss";
 
-type propsType = {
-   game: GameType,
-}
+type BtnPropsType = {
+   game: GameType;
+};
 
-const BtnPrice: React.FC<propsType> = React.memo(({ game }) => {
+const BtnPrice: React.FC<BtnPropsType> = React.memo(({ game }) => {
    const dispatch = useDispatch();
    const items: GameType[] = useSelector(gameInCartSelector);
    const itemsInCart = items.some((i) => i.id === game.id);
@@ -37,6 +41,6 @@ const BtnPrice: React.FC<propsType> = React.memo(({ game }) => {
          )}
       </div>
    );
-})
+});
 
 export default BtnPrice;

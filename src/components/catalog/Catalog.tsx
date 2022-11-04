@@ -11,7 +11,36 @@ import Sort from "../sort/Sort";
 import API from "../../API/API";
 //import { useGetItemsQuery } from "../../API/ApiSlice"              //! RTKQuery
 import classes from "./Catalog.module.scss";
-import { GameType } from "../type/type";
+import { GameType } from "../types/type";
+
+const category: string[] = [
+   "Все",
+   "Экшен",
+   "Приключения",
+   "Стратегии",
+   "РПГ",
+   "Гонки",
+   "Симулятор",
+   "Открытый мир",
+   "Шутер",
+   "Война",
+   "Глубокий сюжет",
+   "Протагонистка",
+];
+
+type sortListType = { name: string; order: string }[];
+
+const sortList: sortListType = [
+   { name: "цена меньше", order: "price&order=asc" },
+   { name: "цена больше", order: "price&order=desc" },
+   { name: "по алфавиту", order: "title" },
+   { name: "сначала новые", order: "year&order=desc" },
+];
+
+type BodyClick = MouseEvent & {
+   path: Node[];
+};
+
 
 const Catalog: React.FC = () => {
    const [data, setData] = useState<GameType[]>([]);
@@ -35,13 +64,14 @@ const Catalog: React.FC = () => {
    //    isError,
    //    isSuccess,
    // } = useGetItemsQuery()
-
+   
    useEffect(() => {
-      const handelCklickBody = (e:any) => {
-         if (!e.path.includes(sortRef.current)) {
+      const handelCklickBody = (e: MouseEvent) => {
+         const _e = e as BodyClick;
+         if (sortRef.current && !_e.path.includes(sortRef.current)) {
             setSortListView(false);
          }
-         if (!e.path.includes(categoryRef.current)) {
+         if (categoryRef.current && !_e.path.includes(categoryRef.current)) {
             setVisibleList(false);
          }
       };
@@ -80,48 +110,27 @@ const Catalog: React.FC = () => {
       navigate(`?${queryString}`);
    }, [selectListItem, selectCategory, selectSort, search, navigate]);
 
-   const category: string[]= [
-      "Все",
-      "Экшен",
-      "Приключения",
-      "Стратегии",
-      "РПГ",
-      "Гонки",
-      "Симулятор",
-      "Открытый мир",
-      "Шутер",
-      "Война",
-      "Глубокий сюжет",
-      "Протагонистка",
-   ];
-   
-   type sortListType = {name: string, order: string}[]
-   
-   const sortList: sortListType= [
-      { name: "цена меньше", order: "price&order=asc" },
-      { name: "цена больше", order: "price&order=desc" },
-      { name: "по алфавиту", order: "title" },
-      { name: "сначала новые", order: "year&order=desc" },
-   ];
-
    const onChangeCategory = useCallback((index: number) => {
       setIsLoadingGame(true);
       setSelectListItem(index);
       setSelectCategory(category[index]);
       setError("");
-   },[])
+   }, []);
 
    const onClickSelectSortValue = useCallback((index: number) => {
       setIsLoadingGame(true);
       setSortListSelect(index);
       setSelectSort(sortList[index].order);
       setError("");
-   },[])
+   }, []);
 
-   const onChangeSerachInput = useCallback(debounce((value: string) => {
-      setValue(value)
-      setSearch(value);
-   }, 250),[])
+   const onChangeSerachInput = useCallback(
+      debounce((value: string) => {
+         setValue(value);
+         setSearch(value);
+      }, 250),
+      []
+   );
 
    return (
       <div className={classes.conteiner__catalog}>
@@ -159,7 +168,8 @@ const Catalog: React.FC = () => {
                ? [...new Array(6)].map((_, i) => (
                     <LoadingSceletonItemGame key={i} />
                  ))
-               : data && data.map((game) => <GameItem game={game} key={game.id} />)}
+               : data &&
+                 data.map((game) => <GameItem game={game} key={game.id} />)}
          </div>
       </div>
    );

@@ -1,12 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteGameInCart } from "../store/cartReducer/cartSlice";
+import {
+   deleteGameInCart,
+   gameInCartSelector,
+} from "../store/cartReducer/cartSlice";
 import cartImage from "../../assets/img/cart.png";
 import classes from "./Cart.module.scss";
+import { GameType } from "../types/type";
 
-const Cart = () => {
+const Cart: React.FC = () => {
    const dispatch = useDispatch();
-   const items = useSelector((state) => state.cart.gameInCart);
+   const items: GameType[] = useSelector(gameInCartSelector);
    const totalPrice = items.reduce((acc, game) => acc + game.price, 0);
 
    return (
@@ -14,8 +18,9 @@ const Cart = () => {
          {items.length > 0 ? (
             <div className={classes.conteiner__gameInCart}>
                <div className={classes.gameTitle}>
-                  {items.map((i) =>
-                     i !== items ? (
+                  {items.map(
+                     (i) => (
+                        //i !== items ? (
                         <div key={i.id}>
                            <img src={i.image} alt="" />
                            <span>
@@ -30,7 +35,8 @@ const Cart = () => {
                               Удалить из корзины
                            </div>
                         </div>
-                     ) : null
+                     )
+                     //) : null
                   )}
                </div>
                <div className={classes.priceAllGame}>

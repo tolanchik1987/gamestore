@@ -2075,6 +2075,13 @@
   "resolved" "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   "version" "1.2.4"
 
+"@types/react-content-loader@^4.0.0":
+  "integrity" "sha512-q06iajQsGE/fi08W7bchIX2C/dgKLMU4KLAWQOeF9WZFmXd6SeRdSjO9Z/grXaKXnjFW6+P7l6/BlN9kvO2v2A=="
+  "resolved" "https://registry.npmjs.org/@types/react-content-loader/-/react-content-loader-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "react-content-loader" "*"
+
 "@types/react-dom@^16.8 || ^17.0 || ^18.0", "@types/react-dom@^18.0.0", "@types/react-dom@^18.0.8":
   "integrity" "sha512-C3GYO0HLaOkk9dDAz3Dl4sbe4AKUGTCfFIZsz3n/82dPNN8Du533HzKatDxeUYWu24wJgMP1xICqkWk1YOLOIw=="
   "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.8.tgz"
@@ -7437,7 +7444,7 @@
     "regenerator-runtime" "^0.13.9"
     "whatwg-fetch" "^3.6.2"
 
-"react-content-loader@^6.2.0":
+"react-content-loader@*", "react-content-loader@^6.2.0":
   "integrity" "sha512-r1dI6S+uHNLW68qraLE2njJYOuy6976PpCExuCZUcABWbfnF3FMcmuESRI8L4Bj45wnZ7n8g71hkPLzbma7/Cw=="
   "resolved" "https://registry.npmjs.org/react-content-loader/-/react-content-loader-6.2.0.tgz"
   "version" "6.2.0"
