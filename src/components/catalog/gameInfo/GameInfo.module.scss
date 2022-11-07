@@ -1,5 +1,8 @@
 .conteiner__game_info {
+   display: -webkit-box;
+   display: -ms-flexbox;
    display: flex;
+   -ms-flex-pack: distribute;
    justify-content: space-around;
    margin: 30px;
    img {
@@ -17,10 +20,17 @@
    }
    .conteiner__info {
       max-width: 350px;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
    }
    .conteiner__video {
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center;
    }
 }

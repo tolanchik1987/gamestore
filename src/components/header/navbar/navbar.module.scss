@@ -1,6 +1,12 @@
 .conteiner_nav {
+   display: -webkit-box;
+   display: -ms-flexbox;
    display: flex;
+   -webkit-box-pack: justify;
+   -ms-flex-pack: justify;
    justify-content: space-between;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
    align-items: center;
    font-size: 24px;
    img {
@@ -13,6 +19,7 @@
       text-decoration: none;
       padding: 0px 15px 5px 15px;
       border-radius: 25px;
+      -webkit-transition: all 0.8s ease;
       transition: all 0.8s ease;
       &:hover {
          animation: wave 2s ease infinite;
@@ -27,19 +34,38 @@
    }
 }
 
-@keyframes wave {
+@-webkit-keyframes wave {
    0% {
-      box-shadow: 1px 1px 6px rgb(0, 50, 216);
+      -webkit-box-shadow: 1px 1px 6px #0032d8;
+      box-shadow: 1px 1px 6px #0032d8;
    }
    50% {
-      box-shadow: 1px 1px 26px 10px rgb(0, 50, 216);
+      -webkit-box-shadow: 1px 1px 26px 10px #0032d8;
+      box-shadow: 1px 1px 26px 10px #0032d8;
    }
    100% {
-      box-shadow: 1px 1px 6px rgb(0, 50, 216);
+      -webkit-box-shadow: 1px 1px 6px #0032d8;
+      box-shadow: 1px 1px 6px #0032d8;
+   }
+}
+
+@keyframes wave {
+   0% {
+      -webkit-box-shadow: 1px 1px 6px #0032d8;
+      box-shadow: 1px 1px 6px #0032d8;
+   }
+   50% {
+      -webkit-box-shadow: 1px 1px 26px 10px #0032d8;
+      box-shadow: 1px 1px 26px 10px #0032d8;
+   }
+   100% {
+      -webkit-box-shadow: 1px 1px 6px #0032d8;
+      box-shadow: 1px 1px 6px #0032d8;
    }
 }
 
 .active {
+   -webkit-animation: wave 2s ease infinite;
    animation: wave 2s ease infinite;
    background: rgb(59, 58, 58);
 }
