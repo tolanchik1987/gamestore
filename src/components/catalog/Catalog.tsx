@@ -28,7 +28,10 @@ const category: string[] = [
    "Протагонистка",
 ];
 
-type sortListType = { name: string; order: string }[];
+type sortListType = {
+   name: "цена меньше" | "цена больше" | "по алфавиту" | "сначала новые";
+   order: "price&order=asc" | "price&order=desc" | "title" | "year&order=desc";
+}[];
 
 const sortList: sortListType = [
    { name: "цена меньше", order: "price&order=asc" },
@@ -40,7 +43,6 @@ const sortList: sortListType = [
 type BodyClick = MouseEvent & {
    path: Node[];
 };
-
 
 const Catalog: React.FC = () => {
    const [data, setData] = useState<GameType[]>([]);
@@ -64,7 +66,7 @@ const Catalog: React.FC = () => {
    //    isError,
    //    isSuccess,
    // } = useGetItemsQuery()
-   
+
    useEffect(() => {
       const handelCklickBody = (e: MouseEvent) => {
          const _e = e as BodyClick;

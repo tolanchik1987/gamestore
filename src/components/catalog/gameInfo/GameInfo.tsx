@@ -2,11 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import BtnPrice from "../../btn_price/BtnPrice";
 import { gameSelectSelector } from "../../store/cartReducer/cartSlice";
-import { GameType } from "../../types/type";
 import classes from "./GameInfo.module.scss";
 
 const GameInfo: React.FC = () => {
-   const game: GameType = useSelector(gameSelectSelector);
+   const game = useSelector(gameSelectSelector);
 
    return (
       <div className={classes.conteiner__game_info}>

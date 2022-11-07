@@ -16,6 +16,17 @@ const BtnPrice: React.FC<BtnPropsType> = React.memo(({ game }) => {
    const dispatch = useDispatch();
    const items: GameType[] = useSelector(gameInCartSelector);
    const itemsInCart = items.some((i) => i.id === game.id);
+  
+   // const isMounted = React.useRef(false);
+
+   // React.useEffect(()=> {
+   //    if (isMounted.current) {
+   //       const localStorageData = JSON.stringify(items);
+   //       localStorage.setItem('cart', JSON.stringify(localStorageData));
+   //    }
+   //    isMounted.current = true;
+   // }, [items])
+
    const addGameToCart = () => {
       if (!itemsInCart) {
          dispatch(addToCart(game));
