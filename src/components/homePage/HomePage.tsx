@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GameItem from "../catalog/gameItem/GameItem";
-import PictureGameOnHomePage from "../SceletonItem/LoadingSceletonPictureGameOnHomePage/PictureGameOnHomePage";
+import PictureGameOnHomePage from "../SceletonItem/loadingSceletonPictureGameOnHomePage/PictureGameOnHomePage";
 import LoadingSceletonItemGame from "../SceletonItem/loadingSceletonItemGame/LoadingSceletonItemGame";
 import JenersItem from "./jenersItem/JenersItem";
 import API from "../../API/API";
