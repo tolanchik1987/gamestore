@@ -7,7 +7,7 @@ const PageNotFound: React.FC = () => {
    return (
       <div className={classes.wrapper}>
          <h1>PAGE NOT FOUND !</h1>
-         <Link to="/"><button className={classes.btnBack}><FiArrowLeft size={20}/> На главную</button></Link>
+         <Link to="/catalog"><button className={classes.btnBack}><FiArrowLeft size={20}/> На главную</button></Link>
       </div>
    );
 };

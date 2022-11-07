@@ -13,7 +13,8 @@
       width: 200px;
       height: 50px;
 		&:active {
-			box-shadow: 0 0 8px white;
+         -webkit-box-shadow: 0 0 8px white;
+         box-shadow: 0 0 8px white;
 		}
    }
 }

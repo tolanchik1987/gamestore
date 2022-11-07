@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import cartSlice from "./cartReducer/cartSlice";
+import orderSlice from "./orderReduser/orderSlice";
 import searchCatalogSlice from "./searchCategoryReducer/searchCatalogSlice";
 //import { apiSlice } from "../../API/ApiSlice";   //!   RTKQwery
 
@@ -16,6 +17,7 @@ export const store = configureStore({
    reducer: {
       search: searchCatalogSlice,
       cart: cartSlice,
+      order: orderSlice,
       //[apiSlice.reducerPath]: apiSlice.reducer,         //!   RTKQwery
       },
    // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware, apiSlice.middleware),         //!   RTKQwery

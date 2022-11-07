@@ -10,44 +10,46 @@ import {
 import cartImage from "../../assets/img/cart.png";
 import classes from "./Cart.module.scss";
 import { GameType } from "../types/type";
+import { setNewOrder } from "../store/orderReduser/orderSlice";
+import { warn } from "console";
 
 const Cart: React.FC = () => {
    const dispatch = useDispatch();
    const items: GameType[] = useSelector(gameInCartSelector);
    const totalPrice = useSelector(totalPriceSelector);
-   
-   React.useEffect(()=>{
+
+   React.useEffect(() => {
       dispatch(setTotalPrice(items.reduce((acc, game) => acc + game.price, 0)));
-   }, [items])
+   }, [items]);
 
    const onClickOrder = () => {
-      dispatch(clearCart())
-      alert('Спасибо! Ваш заказ принят!')
-   }
+      dispatch(setNewOrder(items));
+      dispatch(setTotalPrice(totalPrice));
+      alert(`Спасибо! Ваш заказ принят! ${items.map((i) => i.title)}`);
+      dispatch(clearCart());
+   };
 
    return (
       <div>
          {items.length > 0 ? (
             <div className={classes.conteiner__gameInCart}>
                <div className={classes.gameTitle}>
-                  {items?.map(
-                     (i) => (
-                        <div key={i.id}>
-                           <img src={i.image} alt="" />
-                           <span>
-                              {i.title} - {i.price} руб.
-                           </span>
-                           <div
-                              className={classes.btnItem}
-                              onClick={() => {
-                                 dispatch(deleteGameInCart(i.id));
-                              }}
-                           >
-                              Удалить из корзины
-                           </div>
+                  {items?.map((i) => (
+                     <div key={i.id}>
+                        <img src={i.image} alt="" />
+                        <span>
+                           {i.title} - {i.price} руб.
+                        </span>
+                        <div
+                           className={classes.btnItem}
+                           onClick={() => {
+                              dispatch(deleteGameInCart(i.id));
+                           }}
+                        >
+                           Удалить из корзины
                         </div>
-                     )
-                  )}
+                     </div>
+                  ))}
                </div>
                <div className={classes.priceAllGame}>
                   <b>Всего к оплате: {totalPrice} руб.</b>
@@ -58,7 +60,7 @@ const Cart: React.FC = () => {
             <div className={classes.cartImage}>
                <i>"Корзина пуста"</i>
                <div>
-                  <img src={cartImage} alt="" />
+                  <img src={cartImage} alt="cart" />
                </div>
             </div>
          )}
