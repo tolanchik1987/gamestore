@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
    const navigate: NavigateFunction = useNavigate();
 
    const handelClick = (): void => {
-      navigate("/");
+      navigate("gamestore/");
    };
 
    return (
