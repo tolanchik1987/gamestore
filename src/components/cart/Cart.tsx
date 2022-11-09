@@ -16,7 +16,7 @@ const Cart: React.FC = () => {
    const dispatch = useDispatch();
    const items: GameType[] = useSelector(gameInCartSelector);
    const totalPrice = useSelector(totalPriceSelector);
-     const isMounted = React.useRef(false);
+   const isMounted = React.useRef(false);
 
    React.useEffect(()=> {
       if (isMounted.current) {

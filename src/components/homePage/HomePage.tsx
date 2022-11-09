@@ -6,6 +6,8 @@ import JenersItem from "./jenersItem/JenersItem";
 import API from "../../API/API";
 import classes from "./HomePage.module.scss";
 import { GameType } from "../types/type";
+import { useSelector } from "react-redux";
+import { gameInCartSelector, totalPriceSelector } from "../store/cartReducer/cartSlice";
 
 const HomePage: React.FC = () => {
    const [visiblePopular, setVisiblePopular] = useState<boolean>(false);
@@ -18,6 +20,19 @@ const HomePage: React.FC = () => {
    const [isLoading, setIsLoading] = useState<boolean>(true);
    const [error, setError] = useState<string>("");
    const [searchValue, setSearchValue] = useState<string>("");
+   const items: GameType[] = useSelector(gameInCartSelector);
+   const totalPrice = useSelector(totalPriceSelector);
+   const isMounted = React.useRef(false);
+
+   React.useEffect(()=> {
+      if (isMounted.current) {
+         const localStorageData = JSON.stringify(items);
+         const localStorageTotalPrice = JSON.stringify(totalPrice);
+         localStorage.setItem('cart', localStorageData);
+         localStorage.setItem('cartTotalPrice', localStorageTotalPrice);
+      }
+      isMounted.current = true;
+   }, [items,totalPrice])
 
    useEffect(() => {
       API.get(searchValue)

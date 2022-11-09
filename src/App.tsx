@@ -8,6 +8,9 @@ import HomePage from "./components/homePage/HomePage";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
 import "./App.scss";
 import PreLoader from "./components/loading/PreLoader";
+import { GameType } from "./components/types/type";
+import { useSelector } from "react-redux";
+import { gameInCartSelector, totalPriceSelector } from "./components/store/cartReducer/cartSlice";
 const Catalog = React.lazy(
    /*webpackChankName: "Catalog"*/ () => import("./components/catalog/Catalog")
 );
@@ -16,6 +19,7 @@ const Cart = React.lazy(
 );
 
 const App: React.FC = () => {
+
    return (
       <div className="conteiner__page">
          <header className="conteiner__header">

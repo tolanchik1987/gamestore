@@ -12,6 +12,8 @@ import API from "../../API/API";
 //import { useGetItemsQuery } from "../../API/ApiSlice"              //! RTKQuery
 import classes from "./Catalog.module.scss";
 import { GameType } from "../types/type";
+import { useSelector } from "react-redux";
+import { gameInCartSelector, totalPriceSelector } from "../store/cartReducer/cartSlice";
 
 const category: string[] = [
    "Все",
@@ -59,7 +61,19 @@ const Catalog: React.FC = () => {
    const navigate = useNavigate();
    const sortRef = useRef<HTMLDivElement>(null);
    const categoryRef = useRef<HTMLDivElement>(null);
-   
+   const items: GameType[] = useSelector(gameInCartSelector);
+   const totalPrice = useSelector(totalPriceSelector);
+   const isMounted = React.useRef(false);
+
+   React.useEffect(()=> {
+      if (isMounted.current) {
+         const localStorageData = JSON.stringify(items);
+         const localStorageTotalPrice = JSON.stringify(totalPrice);
+         localStorage.setItem('cart', localStorageData);
+         localStorage.setItem('cartTotalPrice', localStorageTotalPrice);
+      }
+      isMounted.current = true;
+   }, [items,totalPrice])
    // const {                                     //! RTKQuery
    //    data: items = [],
    //    isLoading,
