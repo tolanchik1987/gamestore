@@ -1,7 +1,7 @@
 {
    "name": "gamestore",
    "version": "0.1.0",
-   "homepage": "https://tolanchik1987.github.io/gamestore",
+   "homepage": "https://tolanchik1987.github.io/gamestore/",
    "dependencies": {
       "@reduxjs/toolkit": "^1.8.5",
       "@testing-library/jest-dom": "^5.14.1",
