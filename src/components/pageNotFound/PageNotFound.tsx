@@ -6,8 +6,8 @@ import classes from "./PageNotFound.module.scss";
 const PageNotFound: React.FC = () => {
    return (
       <div className={classes.wrapper}>
-         <h1>PAGE NOT FOUND !</h1>
-         <Link to="/catalog"><button className={classes.btnBack}><FiArrowLeft size={20}/> На главную</button></Link>
+         <h1>CТРАНИЦА НЕ НАЙДЕНА!</h1>
+         <Link to="/"><button className={classes.btnBack}><FiArrowLeft size={20}/> На главную</button></Link>
       </div>
    );
 };

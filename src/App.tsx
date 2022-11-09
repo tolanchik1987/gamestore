@@ -25,7 +25,6 @@ const App: React.FC = () => {
             <React.Suspense fallback={<PreLoader />}>
                <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="/home" element={<HomePage />} />
                   <Route path="/catalog" element={<Catalog />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/cart" element={<Cart />} />

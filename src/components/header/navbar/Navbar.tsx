@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
    const navigate: NavigateFunction = useNavigate();
 
    const handelClick = (): void => {
-      navigate("/home");
+      navigate("/");
    };
 
    return (
@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
          />
          <nav className={classes.conteiner_links}>
             <NavLink
-               to="/home"
+               to="/"
                onClick={() => setActiveLink(1)}
                className={activeLink === 1 ? classes.active : ""}
             >
