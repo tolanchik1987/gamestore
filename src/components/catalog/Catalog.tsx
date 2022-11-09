@@ -104,8 +104,8 @@ const Catalog: React.FC = () => {
             search
                ? `?title=${search}`
                : !selectListItem
-               ? `?sortBy=${selectSort}`
-               : `?search=${selectCategory}&sortBy=${selectSort}`
+               ? `?sortBy=${selectSort ? selectSort : "price&order=asc"}`
+               : `?search=${selectCategory}&sortBy=${selectSort ? selectSort : "price&order=asc"}`
          }`
       )
          .then((response) => {
