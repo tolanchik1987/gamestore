@@ -32,14 +32,14 @@ const Navbar: React.FC = () => {
                Главная
             </NavLink>
             <NavLink
-               to="gamestore/catalog"
+               to="/gamestore/catalog"
                onClick={() => setActiveLink(2)}
                className={activeLink === 2 ? classes.active : ""}
             >
                Каталог
             </NavLink>
             <NavLink
-               to="gamestore/about"
+               to="/gamestore/about"
                onClick={() => setActiveLink(3)}
                className={activeLink === 3 ? classes.active : ""}
             >
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
             </NavLink>
             {items.length > 0 ? (
                <NavLink
-                  to="gamestore/cart"
+                  to="/gamestore/cart"
                   onClick={() => setActiveLink(4)}
                   className={
                      activeLink === 4 ? classes.active : classes.itemInCart
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
                </NavLink>
             ) : (
                <NavLink
-                  to="gamestore/cart"
+                  to="/gamestore/cart"
                   onClick={() => setActiveLink(4)}
                   className={activeLink === 4 ? classes.active : ""}
                >

@@ -26,10 +26,10 @@ const App: React.FC = () => {
                <Routes>
                   <Route path="gamestore/" element={<HomePage />} />
                   <Route path="/gamestore" element={<HomePage />} />
-                  <Route path="gamestore/catalog" element={<Catalog />} />
-                  <Route path="gamestore/about" element={<About />} />
-                  <Route path="gamestore/cart" element={<Cart />} />
-                  <Route path="gamestore/GameInfo" element={<GameInfo />} />
+                  <Route path="/gamestore/catalog" element={<Catalog />} />
+                  <Route path="/gamestore/about" element={<About />} />
+                  <Route path="/gamestore/cart" element={<Cart />} />
+                  <Route path="/gamestore/GameInfo" element={<GameInfo />} />
                   <Route path="*" element={<PageNotFound />} />
                </Routes>
             </React.Suspense>
