@@ -1,17 +1,18 @@
 import { RootState } from './../store';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GameType } from "../../types/type";
-//import { getCartFromLS } from '../../../utils/getCartFromLocalStorage';
-
+import { getCartFromLS } from '../../utils/getCartFromLocalStorage';
 interface ICartSlice {
    gameInCart: GameType[];
    gameSelected: GameType;
    totalPrice: number;
 }
-//const cartData = getCartFromLS();
+
+const cartData = getCartFromLS();
+
 const initialState: ICartSlice = {
-   gameInCart: [],
-   totalPrice: 0,
+   gameInCart: cartData ? cartData.items : [],
+   totalPrice: cartData ? cartData.totalPrice : 0,
    gameSelected: {
       description: "",
       genres: [],

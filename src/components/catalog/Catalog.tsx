@@ -59,6 +59,7 @@ const Catalog: React.FC = () => {
    const navigate = useNavigate();
    const sortRef = useRef<HTMLDivElement>(null);
    const categoryRef = useRef<HTMLDivElement>(null);
+   
    // const {                                     //! RTKQuery
    //    data: items = [],
    //    isLoading,
