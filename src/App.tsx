@@ -24,11 +24,11 @@ const App: React.FC = () => {
          <main className="conteiner__content">
             <React.Suspense fallback={<PreLoader />}>
                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/catalog" element={<Catalog />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/GameInfo" element={<GameInfo />} />
+                  <Route path="gamestore/" element={<HomePage />} />
+                  <Route path="gamestore/catalog" element={<Catalog />} />
+                  <Route path="gamestore/about" element={<About />} />
+                  <Route path="gamestore/cart" element={<Cart />} />
+                  <Route path="gamestore/GameInfo" element={<GameInfo />} />
                   <Route path="*" element={<PageNotFound />} />
                </Routes>
             </React.Suspense>

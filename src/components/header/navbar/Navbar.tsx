@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
    const navigate: NavigateFunction = useNavigate();
 
    const handelClick = (): void => {
-      navigate("/");
+      navigate("gamestore/");
    };
 
    return (
@@ -25,21 +25,21 @@ const Navbar: React.FC = () => {
          />
          <nav className={classes.conteiner_links}>
             <NavLink
-               to="/"
+               to="gamestore/"
                onClick={() => setActiveLink(1)}
                className={activeLink === 1 ? classes.active : ""}
             >
                Главная
             </NavLink>
             <NavLink
-               to="/catalog"
+               to="gamestore/catalog"
                onClick={() => setActiveLink(2)}
                className={activeLink === 2 ? classes.active : ""}
             >
                Каталог
             </NavLink>
             <NavLink
-               to="/about"
+               to="gamestore/about"
                onClick={() => setActiveLink(3)}
                className={activeLink === 3 ? classes.active : ""}
             >
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
             </NavLink>
             {items.length > 0 ? (
                <NavLink
-                  to="/cart"
+                  to="gamestore/cart"
                   onClick={() => setActiveLink(4)}
                   className={
                      activeLink === 4 ? classes.active : classes.itemInCart
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
                </NavLink>
             ) : (
                <NavLink
-                  to="/cart"
+                  to="gamestore/cart"
                   onClick={() => setActiveLink(4)}
                   className={activeLink === 4 ? classes.active : ""}
                >
