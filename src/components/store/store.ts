@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import cartSlice from "./cartReducer/cartSlice";
-import orderSlice from "./orderReduser/orderSlice";
+import orderSlice from "./orderReducer/orderSlice";
 import searchCatalogSlice from "./searchCategoryReducer/searchCatalogSlice";
 //import { apiSlice } from "../../API/ApiSlice";   //!   RTKQwery
 

@@ -10,7 +10,7 @@ import {
 import cartImage from "../../assets/img/cart.png";
 import classes from "./Cart.module.scss";
 import { GameType } from "../types/type";
-import { setNewOrder } from "../store/orderReduser/orderSlice";
+import { setNewOrder, setOrderTotalPrice } from "../store/orderReducer/orderSlice";
 import { warn } from "console";
 
 const Cart: React.FC = () => {
@@ -24,7 +24,7 @@ const Cart: React.FC = () => {
 
    const onClickOrder = () => {
       dispatch(setNewOrder(items));
-      dispatch(setTotalPrice(totalPrice));
+      dispatch(setOrderTotalPrice(totalPrice));
       alert(`Спасибо! Ваш заказ принят! ${items.map((i) => i.title)}`);
       dispatch(clearCart());
    };
