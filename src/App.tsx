@@ -12,10 +12,10 @@ import { GameType } from "./components/types/type";
 import { useSelector } from "react-redux";
 import { gameInCartSelector, totalPriceSelector } from "./components/store/cartReducer/cartSlice";
 const Catalog = React.lazy(
-   /*webpackChankName: "Catalog"*/ () => import("./components/catalog/Catalog")
+   /*webpackChunkName: "Catalog"*/ () => import("./components/catalog/Catalog")
 );
 const Cart = React.lazy(
-   /*webpackChankName: "Cart"*/ () => import("./components/cart/Cart")
+   /*webpackChunkName: "Cart"*/ () => import("./components/cart/Cart")
 );
 
 const App: React.FC = () => {
@@ -28,11 +28,11 @@ const App: React.FC = () => {
          <main className="conteiner__content">
             <React.Suspense fallback={<PreLoader />}>
                <Routes>
-                  <Route path="gamestore/" element={<HomePage />} />
-                  <Route path="gamestore/catalog/" element={<Catalog />} />
-                  <Route path="gamestore/about/" element={<About />} />
-                  <Route path="gamestore/cart/" element={<Cart />} />
-                  <Route path="gamestore/GameInfo/" element={<GameInfo />} />
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/catalog" element={<Catalog />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/gameInfo" element={<GameInfo />} />
                   <Route path="*" element={<PageNotFound />} />
                </Routes>
             </React.Suspense>
