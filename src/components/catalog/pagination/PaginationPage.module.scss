@@ -1,0 +1,32 @@
+.paginated {
+   ul {
+   
+      li {
+         color: white;
+         font-size: 22px;
+         vertical-align: baseline;
+         a {
+            color: rgb(180, 180, 180);
+            &:hover{
+               color: rgb(60, 255, 1);
+            }
+            &:current{
+               color: rgb(0, 0, 0);
+            }
+         }
+         button {
+            color: aliceblue;
+            svg {
+               width: 20px;
+               height: 20px;
+            }
+         }
+      }
+      div {
+         vertical-align: baseline;
+         input {
+            vertical-align: top;
+         }
+      }
+   }
+}

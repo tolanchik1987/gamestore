@@ -17,6 +17,7 @@ import {
    gameInCartSelector,
    totalPriceSelector,
 } from "../store/cartReducer/cartSlice";
+import PaginationPage from "./pagination/Pagination";
 
 const category: string[] = [
    "Все",
@@ -67,6 +68,8 @@ const Catalog: React.FC = () => {
    const items: GameType[] = useSelector(gameInCartSelector);
    const totalPrice = useSelector(totalPriceSelector);
    const isMounted = React.useRef(false);
+   const [currentPage, setCurrentPage] = useState<number>(1);
+   const [pageSize, setPageSize] = useState<number>(3)
 
    React.useEffect(() => {
       if (isMounted.current) {
@@ -108,9 +111,9 @@ const Catalog: React.FC = () => {
             search
                ? `?title=${search}`
                : !selectListItem
-               ? `?sortBy=${selectSort ? selectSort : "price&order=asc"}`
+               ? `?sortBy=${selectSort ? selectSort : `price&order=asc&page=${currentPage}&limit=${pageSize}`}`
                : `?search=${selectCategory}&sortBy=${
-                    selectSort ? selectSort : "price&order=asc"
+                    selectSort ? selectSort : `price&order=asc&page=${currentPage}&limit=${pageSize}`
                  }`
          }`
       )
@@ -121,7 +124,7 @@ const Catalog: React.FC = () => {
          .catch((error) => {
             setError(error.message);
          });
-   }, [selectListItem, selectCategory, selectSort, search, navigate]);
+   }, [selectListItem, selectCategory, selectSort, search, currentPage, navigate]);
 
    useEffect(() => {
       const queryString = qs.stringify({
@@ -129,9 +132,10 @@ const Catalog: React.FC = () => {
          selectCategory,
          selectSort,
          search,
+         currentPage,
       });
       navigate(`?${queryString}`);
-   }, [selectListItem, selectCategory, selectSort, search, navigate]);
+   }, [selectListItem, selectCategory, selectSort, search, currentPage, navigate]);
 
    const onChangeCategory = useCallback((index: number) => {
       setIsLoadingGame(true);
@@ -194,6 +198,7 @@ const Catalog: React.FC = () => {
                : data &&
                  data.map((game) => <GameItem game={game} key={game.id} />)}
          </div>
+         <PaginationPage currentPage={currentPage} setCurrentPage={setCurrentPage} pageSize={pageSize} setPageSize={setPageSize}/>
       </div>
    );
 };
