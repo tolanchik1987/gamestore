@@ -109,11 +109,11 @@ const Catalog: React.FC = () => {
       API.get(
          `${
             search
-               ? `?title=${search}`
+               ? `?page=${currentPage}&limit=${pageSize}&title=${search}`
                : !selectListItem
-               ? `?sortBy=${selectSort ? selectSort : `price&order=asc&page=${currentPage}&limit=${pageSize}`}`
-               : `?search=${selectCategory}&sortBy=${
-                    selectSort ? selectSort : `price&order=asc&page=${currentPage}&limit=${pageSize}`
+               ? `?page=${currentPage}&limit=${pageSize}&sortBy=${selectSort ? selectSort : `price&order=asc`}`
+               : `?page=${currentPage}&limit=${pageSize}&search=${selectCategory}&sortBy=${
+                    selectSort ? selectSort : `price&order=asc`
                  }`
          }`
       )
