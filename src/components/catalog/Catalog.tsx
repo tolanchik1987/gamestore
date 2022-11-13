@@ -74,6 +74,7 @@ const Catalog: React.FC = () => {
       }
       isMounted.current = true;
    }, [items,totalPrice])
+  
    // const {                                     //! RTKQuery
    //    data: items = [],
    //    isLoading,
