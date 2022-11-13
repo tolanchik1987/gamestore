@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/gamestore/static/css/main.49c2d90b.css",
-    "main.js": "/gamestore/static/js/main.b6bfb969.js",
-    "static/css/830.50097f93.chunk.css": "/gamestore/static/css/830.50097f93.chunk.css",
-    "static/js/830.dc0e1a11.chunk.js": "/gamestore/static/js/830.dc0e1a11.chunk.js",
+    "main.js": "/gamestore/static/js/main.67d321ed.js",
+    "static/css/258.230d0165.chunk.css": "/gamestore/static/css/258.230d0165.chunk.css",
+    "static/js/258.c5af07ce.chunk.js": "/gamestore/static/js/258.c5af07ce.chunk.js",
     "static/css/199.44aba876.chunk.css": "/gamestore/static/css/199.44aba876.chunk.css",
     "static/js/199.7e191795.chunk.js": "/gamestore/static/js/199.7e191795.chunk.js",
-    "static/js/868.f1dc79f3.chunk.js": "/gamestore/static/js/868.f1dc79f3.chunk.js",
+    "static/js/982.04b573c0.chunk.js": "/gamestore/static/js/982.04b573c0.chunk.js",
     "static/media/cart.png": "/gamestore/static/media/cart.3fcf1283de4d8f8de482.png",
     "static/media/loading1.gif": "/gamestore/static/media/loading1.f235a9091e23a90b6d99.gif",
     "index.html": "/gamestore/index.html",
     "main.49c2d90b.css.map": "/gamestore/static/css/main.49c2d90b.css.map",
-    "main.b6bfb969.js.map": "/gamestore/static/js/main.b6bfb969.js.map",
-    "830.50097f93.chunk.css.map": "/gamestore/static/css/830.50097f93.chunk.css.map",
-    "830.dc0e1a11.chunk.js.map": "/gamestore/static/js/830.dc0e1a11.chunk.js.map",
+    "main.67d321ed.js.map": "/gamestore/static/js/main.67d321ed.js.map",
+    "258.230d0165.chunk.css.map": "/gamestore/static/css/258.230d0165.chunk.css.map",
+    "258.c5af07ce.chunk.js.map": "/gamestore/static/js/258.c5af07ce.chunk.js.map",
     "199.44aba876.chunk.css.map": "/gamestore/static/css/199.44aba876.chunk.css.map",
     "199.7e191795.chunk.js.map": "/gamestore/static/js/199.7e191795.chunk.js.map",
-    "868.f1dc79f3.chunk.js.map": "/gamestore/static/js/868.f1dc79f3.chunk.js.map"
+    "982.04b573c0.chunk.js.map": "/gamestore/static/js/982.04b573c0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.49c2d90b.css",
-    "static/js/main.b6bfb969.js"
+    "static/js/main.67d321ed.js"
   ]
 }
