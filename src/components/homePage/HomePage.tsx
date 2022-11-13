@@ -8,6 +8,7 @@ import classes from "./HomePage.module.scss";
 import { GameType } from "../types/type";
 import { useSelector } from "react-redux";
 import { gameInCartSelector, totalPriceSelector } from "../store/cartReducer/cartSlice";
+import Carusel from "./carusel/Carusel";
 
 const HomePage: React.FC = () => {
    const [visiblePopular, setVisiblePopular] = useState<boolean>(false);
@@ -90,9 +91,10 @@ const HomePage: React.FC = () => {
    return (
       <div className={classes.conteiner__homePage}>
          <h2>Wellcom game store!</h2>
+         <Carusel data={data}/>
          <div className={classes.listItem}>
             <ul>
-               {category.map((item, index) => (
+               {category.map((item, index: number) => (
                   <li
                      key={item}
                      onClick={() => handleClickCategory(index)}

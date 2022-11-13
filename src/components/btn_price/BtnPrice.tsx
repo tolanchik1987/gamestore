@@ -28,13 +28,13 @@ const BtnPrice: React.FC<BtnPropsType> = React.memo(({ game }) => {
    return (
       <div className={classes.price}>
          {!itemsInCart ? (
-            <button className={classes.secondary} onClick={addGameToCart}>
+            <button className={classes.secondaryMy} onClick={addGameToCart}>
                {!itemsInCart
                   ? `В корзину ${game.price}руб.`
                   : "Удалить из корзины"}{" "}
             </button>
          ) : (
-            <button className={classes.primary} onClick={addGameToCart}>
+            <button className={classes.primaryMy} onClick={addGameToCart}>
                {!itemsInCart
                   ? `В корзину ${game.price}руб.`
                   : "Удалить из корзины"}{" "}

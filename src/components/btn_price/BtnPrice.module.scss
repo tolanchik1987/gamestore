@@ -2,15 +2,15 @@
 
 .price {
    button {
-      @include btnStyle();
+      @include btnStyle(); 
    }
 }
-button.secondary {
+button.secondaryMy {
    &:hover {
       background: rgb(106, 212, 0);
-      font-weight: 700;
+      font-weight: 700; 
    }
 }
-button.primary  {
+button.primaryMy  {
    background: rgb(107, 107, 107) !important
 }
