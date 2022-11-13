@@ -7,7 +7,10 @@ import API from "../../API/API";
 import classes from "./HomePage.module.scss";
 import { GameType } from "../types/type";
 import { useSelector } from "react-redux";
-import { gameInCartSelector, totalPriceSelector } from "../store/cartReducer/cartSlice";
+import {
+   gameInCartSelector,
+   totalPriceSelector,
+} from "../store/cartReducer/cartSlice";
 import Carusel from "./carusel/Carusel";
 
 const HomePage: React.FC = () => {
@@ -25,15 +28,15 @@ const HomePage: React.FC = () => {
    const totalPrice = useSelector(totalPriceSelector);
    const isMounted = React.useRef(false);
 
-   React.useEffect(()=> {
+   React.useEffect(() => {
       if (isMounted.current) {
          const localStorageData = JSON.stringify(items);
          const localStorageTotalPrice = JSON.stringify(totalPrice);
-         localStorage.setItem('cart', localStorageData);
-         localStorage.setItem('cartTotalPrice', localStorageTotalPrice);
+         localStorage.setItem("cart", localStorageData);
+         localStorage.setItem("cartTotalPrice", localStorageTotalPrice);
       }
       isMounted.current = true;
-   }, [items,totalPrice])
+   }, [items, totalPrice]);
 
    useEffect(() => {
       API.get(searchValue)
@@ -86,12 +89,12 @@ const HomePage: React.FC = () => {
       }
    };
 
-   const category: string[] = ["Новинки", "Популярные", "Скидки", "Жанры"];
+   const category: string[] = ["Новинки", "Популярные", "Скидки"];
 
    return (
       <div className={classes.conteiner__homePage}>
-         <h2>Wellcom game store!</h2>
-         <Carusel data={data}/>
+         {activeCategory === 0 ? (<h2>Новинки этого года</h2>) : activeCategory === 1 ? <h2>Популярные игры этого года</h2> : activeCategory === 2 ? <h2>Игры со скидками</h2> : <h2>Лучшие игры этого года</h2>}
+         <Carusel data={data} />
          <div className={classes.listItem}>
             <ul>
                {category.map((item, index: number) => (

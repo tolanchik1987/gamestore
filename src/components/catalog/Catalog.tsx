@@ -13,7 +13,10 @@ import API from "../../API/API";
 import classes from "./Catalog.module.scss";
 import { GameType } from "../types/type";
 import { useSelector } from "react-redux";
-import { gameInCartSelector, totalPriceSelector } from "../store/cartReducer/cartSlice";
+import {
+   gameInCartSelector,
+   totalPriceSelector,
+} from "../store/cartReducer/cartSlice";
 
 const category: string[] = [
    "Все",
@@ -65,16 +68,16 @@ const Catalog: React.FC = () => {
    const totalPrice = useSelector(totalPriceSelector);
    const isMounted = React.useRef(false);
 
-   React.useEffect(()=> {
+   React.useEffect(() => {
       if (isMounted.current) {
          const localStorageData = JSON.stringify(items);
          const localStorageTotalPrice = JSON.stringify(totalPrice);
-         localStorage.setItem('cart', localStorageData);
-         localStorage.setItem('cartTotalPrice', localStorageTotalPrice);
+         localStorage.setItem("cart", localStorageData);
+         localStorage.setItem("cartTotalPrice", localStorageTotalPrice);
       }
       isMounted.current = true;
-   }, [items,totalPrice])
-  
+   }, [items, totalPrice]);
+
    // const {                                     //! RTKQuery
    //    data: items = [],
    //    isLoading,
@@ -106,7 +109,9 @@ const Catalog: React.FC = () => {
                ? `?title=${search}`
                : !selectListItem
                ? `?sortBy=${selectSort ? selectSort : "price&order=asc"}`
-               : `?search=${selectCategory}&sortBy=${selectSort ? selectSort : "price&order=asc"}`
+               : `?search=${selectCategory}&sortBy=${
+                    selectSort ? selectSort : "price&order=asc"
+                 }`
          }`
       )
          .then((response) => {
