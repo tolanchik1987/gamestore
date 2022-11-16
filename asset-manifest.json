@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gamestore/static/css/main.2c16646e.css",
-    "main.js": "/gamestore/static/js/main.35c8270b.js",
+    "main.css": "/gamestore/static/css/main.997827ac.css",
+    "main.js": "/gamestore/static/js/main.9ff85c96.js",
     "static/css/258.25996ce7.chunk.css": "/gamestore/static/css/258.25996ce7.chunk.css",
     "static/js/258.854130bb.chunk.js": "/gamestore/static/js/258.854130bb.chunk.js",
     "static/css/199.0723b60a.chunk.css": "/gamestore/static/css/199.0723b60a.chunk.css",
@@ -10,8 +10,8 @@
     "static/media/cart.png": "/gamestore/static/media/cart.3fcf1283de4d8f8de482.png",
     "static/media/loading1.gif": "/gamestore/static/media/loading1.f235a9091e23a90b6d99.gif",
     "index.html": "/gamestore/index.html",
-    "main.2c16646e.css.map": "/gamestore/static/css/main.2c16646e.css.map",
-    "main.35c8270b.js.map": "/gamestore/static/js/main.35c8270b.js.map",
+    "main.997827ac.css.map": "/gamestore/static/css/main.997827ac.css.map",
+    "main.9ff85c96.js.map": "/gamestore/static/js/main.9ff85c96.js.map",
     "258.25996ce7.chunk.css.map": "/gamestore/static/css/258.25996ce7.chunk.css.map",
     "258.854130bb.chunk.js.map": "/gamestore/static/js/258.854130bb.chunk.js.map",
     "199.0723b60a.chunk.css.map": "/gamestore/static/css/199.0723b60a.chunk.css.map",
@@ -19,7 +19,7 @@
     "742.a29a9f28.chunk.js.map": "/gamestore/static/js/742.a29a9f28.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c16646e.css",
-    "static/js/main.35c8270b.js"
+    "static/css/main.997827ac.css",
+    "static/js/main.9ff85c96.js"
   ]
 }
