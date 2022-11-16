@@ -14,7 +14,7 @@ type PropsType = {
 };
 
 const Carusel: React.FC<PropsType> = ({ data }) => (
-   <Carousel autoplay={true}>
+   <Carousel autoplay>
       {data &&
          data.map((game) => (
             <div>

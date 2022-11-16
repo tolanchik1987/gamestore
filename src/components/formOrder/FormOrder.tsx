@@ -30,14 +30,6 @@ const FormOrder: React.FC = () => {
       mode: "onChange",
    });
 
-   const onSubmit: SubmitHandler<FormInputsType> = (data) => {
-      alert(`Спасибо за заказ! Ваш заказ: ${items.map((i) => `"${i.title}"`)}`);
-      dispatch(setOrderData(data));
-      dispatch(clearCart());
-      dispatch(clearOrder());
-      navigate("/catalog");
-   };
-   
    React.useEffect(()=> {
       if (isMounted.current) {
          const localStorageData = JSON.stringify(items);
@@ -59,6 +51,16 @@ const FormOrder: React.FC = () => {
       dispatch(setOrderTotalPrice(totalPrice));
    }, [items,totalPrice]);
 
+
+   const onSubmit: SubmitHandler<FormInputsType> = (data) => {
+      alert(`Спасибо за заказ! Ваш заказ: ${items.map((i) => `"${i.title}"`)}`);
+      dispatch(setOrderData(data));
+      dispatch(clearCart());
+      dispatch(clearOrder());
+      localStorage.clear();
+      navigate("/catalog");
+   };
+   
    const handleClick = (id:number) => {
       dispatch(deleteGameInCart(id));
       dispatch(deleteGameInOrder(id));
