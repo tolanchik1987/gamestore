@@ -5,6 +5,7 @@ import {
    deleteGameInCart,
    gameInCartSelector,
 } from "../store/cartReducer/cartSlice";
+import { deleteGameInOrder, setNewOrder } from "../store/orderReducer/orderSlice";
 import { BtnPropsType, GameType } from "../types/type";
 import classes from "./BtnPrice.module.scss";
 
@@ -16,8 +17,10 @@ const BtnPrice: React.FC<BtnPropsType> = React.memo(({ game }) => {
    const addGameToCart = () => {
       if (!itemsInCart) {
          dispatch(addToCart(game));
+         dispatch(setNewOrder(game));
       } else {
          dispatch(deleteGameInCart(game.id));
+         dispatch(deleteGameInOrder(game.id));
       }
    };
 

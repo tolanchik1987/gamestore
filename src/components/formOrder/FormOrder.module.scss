@@ -1,45 +1,88 @@
 @import "../catalog/Catalog.module.scss";
-
-.conteiner_form {
-   margin: 2.5vh auto;
-   height: 80vh;
-   width: 90vh;
-   background: rgb(114, 114, 114);
-   border-radius: 15px;
-   h2 {
-      color:rgb(255, 255, 255);
-      font-size: 24px;
-      margin-top: 5vh;
-   }
-   .form {
-      display: flex;
-      flex-direction: column;
-      width: 450px;
-      margin: 0 auto;
-      gap: 2.5vh;
-      padding-top: 2.5vh;
-      input {
-         width: 350px;
-         margin: 0 auto;
+.wrapper__form {
+   display: flex;
+   .conteiner__form {
+      margin: 80px auto;
+      height: 480px;
+      width: 550px;
+      background: rgb(56, 56, 56);
+      border-radius: 15px;
+      animation: pulse 2s ease infinite;
+      overflow: auto;
+      .conteiner_title_price {
+         margin-top: 5vh;
+         h2 {
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+         }
+         span {
+            color:chartreuse;
+         }
       }
-      .error {
-         font-size: 26px;
-         margin: -1.5vh;
-         color: rgb(252, 252, 252);
-         -webkit-text-stroke: 1px rgb(255, 0, 0);
+      .form_order__games {
+         display: flex;
+         flex-direction: row;
+         justify-content:flex-end;
+         margin-top: 10px;
+         .delete__game {
+            color:rgb(255, 0, 0);
+            font-size: 16px;
+            cursor: pointer;
+         }
+         span {
+            margin: 0px 20px;
+            font-size: 18px;
+            height: 30px;
+            padding-top: 15px;
+         }
       }
-      .btn_submit_enabled {
+      .form {
+         display: flex;
+         flex-direction: column;
+         width: 450px;
          margin: 0 auto;
-         @include btnStyle(); 
+         gap: 2.5vh;
+         padding-top: 2.5vh;
+         input {
+            width: 350px;
+            height: 30px;
+            margin: 0 auto;
+            padding-left: 10px;
+            border-radius: 10px;
+         }
+         .error {
+            font-size: 26px;
+            margin: -1.5vh;
+            color: rgb(252, 252, 252);
+            -webkit-text-stroke: 1px rgb(255, 0, 0);
+         }
+         .btn_submit_enabled {
+            margin: 0 auto;
+            @include btnStyle();
+         }
+         .btn_submit_disabled {
+            opacity: 0.5;
+            cursor: no-drop !important;
+            &:disabled {
+               background-color: darkgray;
+            }
+            margin: 0 auto;
+            @include btnStyle();
+            &:hover {
+               -webkit-box-shadow: none;
+               box-shadow: none;
+            }
+         }
       }
-      .btn_submit_disabled {
-         opacity: 0.5;
-         &:disabled {background-color: darkgray;}
-         margin: 0 auto;
-         @include btnStyle(); 
-         &:hover {
-            -webkit-box-shadow: none;
-            box-shadow: none;
+      @keyframes pulse {
+         0% {
+            box-shadow: 1px 1px 6px rgb(0, 50, 216);
+         }
+         50% {
+            box-shadow: 1px 1px 26px rgb(0, 50, 216);
+         }
+         100% {
+            box-shadow: 1px 1px 6px rgb(0, 50, 216);
          }
       }
    }

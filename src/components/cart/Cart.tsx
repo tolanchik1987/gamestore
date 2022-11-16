@@ -10,7 +10,7 @@ import {
 import cartImage from "../../assets/img/cart.png";
 import classes from "./Cart.module.scss";
 import { GameType } from "../types/type";
-import { setNewOrder, setOrderTotalPrice } from "../store/orderReducer/orderSlice";
+import { deleteGameInOrder, setNewOrder, setOrderTotalPrice } from "../store/orderReducer/orderSlice";
 import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {
@@ -35,11 +35,9 @@ const Cart: React.FC = () => {
    }, [items]);
 
    const onClickOrderFinish = () => {
-      dispatch(setNewOrder(items));
+     // dispatch(setNewOrder(items));
       dispatch(setOrderTotalPrice(totalPrice));
       navigate('/cart/order')
-      //alert(`Спасибо за заказ! Ваш заказ: ${items.map((i) => `"${i.title}"`, )}`);
-     // dispatch(clearCart());
    };
 
    return (
@@ -57,6 +55,7 @@ const Cart: React.FC = () => {
                            className={classes.btnItem}
                            onClick={() => {
                               dispatch(deleteGameInCart(i.id));
+                              dispatch(deleteGameInOrder(i.id));
                            }}
                         >
                            Удалить из корзины

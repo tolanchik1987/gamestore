@@ -69,11 +69,18 @@ export interface ICartSlice {
 export interface IOrder {
    orderData: GameType[];
    orderTotalPrice: number;
+   orderNameData: FormInputsType;
 }
 
 export interface ISearchCatalogSlice {
    categoryId: number,
 }
+
+export type FormInputsType = {
+   userName: string;
+   firstName: string;
+   tel: string;
+};
 
 
 
