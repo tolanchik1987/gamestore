@@ -22,7 +22,7 @@ const GameInfo: React.FC = () => {
             <img src={game.image} alt="" />
             <h1>{game.title}</h1>
             <div>
-               {game && game.genres.map((ganre, i) => <i key={i}>{ganre}</i>)}
+               {game && game.genres.map((ganre, i) => <i className={classes.genre} key={i}>{ganre}</i>)}
             </div>
             <div>
                <p>{game.description}</p>
