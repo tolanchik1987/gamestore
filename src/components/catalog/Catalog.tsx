@@ -11,7 +11,7 @@ import Sort from "../sort/Sort";
 import API from "../../API/API";
 //import { useGetItemsQuery } from "../../API/ApiSlice"              //! RTKQuery
 import classes from "./Catalog.module.scss";
-import { GameType } from "../types/type";
+import { BodyClick, GameType, sortListType } from "../types/type";
 import { useSelector } from "react-redux";
 import {
    gameInCartSelector,
@@ -34,21 +34,12 @@ const category: string[] = [
    "Протагонистка",
 ];
 
-type sortListType = {
-   name: "цена меньше" | "цена больше" | "по алфавиту" | "сначала новые";
-   order: "price&order=asc" | "price&order=desc" | "title" | "year&order=desc";
-}[];
-
 const sortList: sortListType = [
    { name: "цена меньше", order: "price&order=asc" },
    { name: "цена больше", order: "price&order=desc" },
    { name: "по алфавиту", order: "title" },
    { name: "сначала новые", order: "year&order=desc" },
 ];
-
-type BodyClick = MouseEvent & {
-   path: Node[];
-};
 
 const Catalog: React.FC = () => {
    const [data, setData] = useState<GameType[]>([]);
@@ -108,11 +99,11 @@ const Catalog: React.FC = () => {
    useEffect(() => {
       API.get(
          `${
-            search
-               ? `?page=${currentPage}&limit=${pageSize}&title=${search}`
+             search
+               ? `?title=${search}`
                : !selectListItem
                ? `?page=${currentPage}&limit=${pageSize}&sortBy=${selectSort ? selectSort : `price&order=asc`}`
-               : `?page=${currentPage}&limit=${pageSize}&search=${selectCategory}&sortBy=${
+               : `?search=${selectCategory}&sortBy=${
                     selectSort ? selectSort : `price&order=asc`
                  }`
          }`
@@ -124,7 +115,7 @@ const Catalog: React.FC = () => {
          .catch((error) => {
             setError(error.message);
          });
-   }, [selectListItem, selectCategory, selectSort, search, currentPage, navigate]);
+   }, [selectListItem, selectCategory, selectSort, search, currentPage,pageSize, navigate]);
 
    useEffect(() => {
       const queryString = qs.stringify({

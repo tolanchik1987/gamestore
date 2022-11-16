@@ -11,9 +11,11 @@ import cartImage from "../../assets/img/cart.png";
 import classes from "./Cart.module.scss";
 import { GameType } from "../types/type";
 import { setNewOrder, setOrderTotalPrice } from "../store/orderReducer/orderSlice";
+import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {
    const dispatch = useDispatch();
+   const navigate = useNavigate();
    const items: GameType[] = useSelector(gameInCartSelector);
    const totalPrice = useSelector(totalPriceSelector);
    const isMounted = React.useRef(false);
@@ -32,11 +34,12 @@ const Cart: React.FC = () => {
       dispatch(setTotalPrice(items.reduce((acc, game) => acc + game.price, 0)));
    }, [items]);
 
-   const onClickOrder = () => {
+   const onClickOrderFinish = () => {
       dispatch(setNewOrder(items));
       dispatch(setOrderTotalPrice(totalPrice));
-      alert(`Спасибо за заказ! Ваш заказ: ${items.map((i) => `"${i.title}"`, )}`);
-      dispatch(clearCart());
+      navigate('/cart/order')
+      //alert(`Спасибо за заказ! Ваш заказ: ${items.map((i) => `"${i.title}"`, )}`);
+     // dispatch(clearCart());
    };
 
    return (
@@ -44,7 +47,7 @@ const Cart: React.FC = () => {
          {items.length > 0 ? (
             <div className={classes.conteiner__gameInCart}>
                <div className={classes.gameTitle}>
-                  {items && items.map((i) => (
+                  {items.map((i) => (
                      <div key={i.id}>
                         <img src={i.image} alt="" />
                         <span>
@@ -63,7 +66,7 @@ const Cart: React.FC = () => {
                </div>
                <div className={classes.priceAllGame}>
                   <b>Всего к оплате: {totalPrice} руб.</b>
-                  <button onClick={onClickOrder}>Оформить заказ</button>
+                  <button onClick={onClickOrderFinish}>Оформить заказ</button>
                </div>
             </div>
          ) : (

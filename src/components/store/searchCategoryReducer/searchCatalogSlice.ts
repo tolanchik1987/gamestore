@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ISearchCatalogSlice } from "../../types/type";
 
-interface SearchCatalogSlice {
-   categoryId: number,
-}
-
-const initialState: SearchCatalogSlice = {
+const initialState: ISearchCatalogSlice = {
    categoryId: 0,
 };
 

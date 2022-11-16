@@ -1,12 +1,6 @@
 import React from "react";
+import { SortPropsType } from "../types/type";
 import classes from "./Sort.module.scss";
-
-type SortPropsType = {
-   sortListSelect: number,
-   sortList: {name: string, order: string}[],
-   sortListView: boolean,
-   onClickSelectSortValue: (index:number) => void,
-}
 
 const Sort: React.FC<SortPropsType> = React.memo(({
    sortListSelect,

@@ -4,6 +4,9 @@
    button {
       @include btnStyle(); 
    }
+   i {
+      font-size: 16px;
+   }
 }
 button.secondaryMy {
    &:hover {

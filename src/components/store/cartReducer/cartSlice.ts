@@ -1,12 +1,7 @@
 import { RootState } from './../store';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GameType } from "../../types/type";
+import { GameType, ICartSlice } from "../../types/type";
 import { getCartFromLS } from '../../utils/getCartFromLocalStorage';
-interface ICartSlice {
-   gameInCart: GameType[];
-   gameSelected: GameType;
-   totalPrice: number;
-}
 
 const cartData = getCartFromLS();
 

@@ -8,6 +8,7 @@ import HomePage from "./components/homePage/HomePage";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
 import "./App.scss";
 import PreLoader from "./components/loading/PreLoader";
+import FormOrder from "./components/formOrder/FormOrder";
 const Catalog = React.lazy(
    /* webpackChunkName: "Catalog" */ () => import("./components/catalog/Catalog")
 );
@@ -35,6 +36,8 @@ const App: React.FC = () => {
                   <Route path="/gamestore/cart" element={<Cart />} />
                   <Route path="/gameInfo" element={<GameInfo />} />
                   <Route path="/gamestore/gameInfo" element={<GameInfo />} />
+                  <Route path="/cart/order" element={<FormOrder />}/>
+                  <Route path="/gamestore/cart/order" element={<FormOrder />} />
                   <Route path="*" element={<PageNotFound />} />
                </Routes>
             </React.Suspense>

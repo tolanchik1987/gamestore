@@ -1,6 +1,6 @@
 import { GameType } from "../types/type";
 
-export const getCartFromLS= () => {
+export const getCartFromLS = () => {
     const data: string | null = localStorage.getItem('cart');
     const dataTotalPrice: string | null = localStorage.getItem('cartTotalPrice')
     const items: GameType[] =  data ? JSON.parse(data) : [] 

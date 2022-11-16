@@ -5,12 +5,8 @@ import {
    deleteGameInCart,
    gameInCartSelector,
 } from "../store/cartReducer/cartSlice";
-import { GameType } from "../types/type";
+import { BtnPropsType, GameType } from "../types/type";
 import classes from "./BtnPrice.module.scss";
-
-type BtnPropsType = {
-   game: GameType;
-};
 
 const BtnPrice: React.FC<BtnPropsType> = React.memo(({ game }) => {
    const dispatch = useDispatch();
@@ -30,14 +26,14 @@ const BtnPrice: React.FC<BtnPropsType> = React.memo(({ game }) => {
          {!itemsInCart ? (
             <button className={classes.secondaryMy} onClick={addGameToCart}>
                {!itemsInCart
-                  ? `В корзину ${game.price}руб.`
-                  : "Удалить из корзины"}{" "}
+                  ? <i>В корзину {game.price} руб.</i>
+                  : <i>Удалить из корзины</i>}
             </button>
          ) : (
             <button className={classes.primaryMy} onClick={addGameToCart}>
                {!itemsInCart
-                  ? `В корзину ${game.price}руб.`
-                  : "Удалить из корзины"}{" "}
+                  ? <i>В корзину {game.price} руб.</i>
+                  : <i>Удалить из корзины</i>}
             </button>
          )}
       </div>

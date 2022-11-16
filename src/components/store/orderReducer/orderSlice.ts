@@ -1,10 +1,5 @@
 import { createSlice , PayloadAction } from "@reduxjs/toolkit";
-import { GameType } from "../../types/type";
-
-interface IOrder {
-   orderData: GameType[];
-   orderTotalPrice: number;
-}
+import { GameType, IOrder } from "../../types/type";
 
 const initialState: IOrder = {
    orderData: [],
